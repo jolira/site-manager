@@ -1,0 +1,19 @@
+{
+  "name": "site-manager",
+  "version": "0.0.1",
+  "description": "Create & manage mobile & desktop sites using HTML5 & CSS3",
+  "keywords": ["site", "html5"],
+  "repository": "git://github.com/jolira/site-manager.git",
+  "author": "Joachim Kainz <jfk@jolira.com> (http://www.jolira.com)",
+  "repository": "git@github.com:jolira/site-manager.git",
+  "dependencies": {
+    "connect": "1.8.4",
+    "debug": "*"
+  },
+  "devDependencies": {
+    "should": "*",
+    "mocha": "*"
+  },
+  "main": "index",
+  "engines": { "node": ">= 0.5.0 < 0.7.0" }
+}

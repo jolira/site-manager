@@ -11,9 +11,10 @@
     "debug": "*"
   },
   "devDependencies": {
+    "markdown": "0.3.1",
     "should": "*",
     "mocha": "*"
   },
-  "main": "index",
+  "main": "server",
   "engines": { "node": ">= 0.5.0 < 0.7.0" }
 }

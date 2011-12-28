@@ -92,7 +92,7 @@ describe('Repo', function () {
 
   describe('#save()', function () {
     it('should save and load without error', function (done) {
-      repo.save(function (err) {
+      repo.save("x.json", "{}", function (err) {
         done(err);
       });
     });

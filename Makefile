@@ -1,9 +1,7 @@
-TEST = node_modules/.bin/mocha
-TESTS ?= test/*.test.js
 SRC = $(shell find lib -type f -name "*.js")
 
 test:
-	@NODE_ENV=test ./$(TEST) $(TEST_FLAGS) $(TESTS)
+	@NODE_ENV=test ./node_modules/.bin/mocha --reporter list
 
 docs:
 	@mkdir -p docs

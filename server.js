@@ -12,24 +12,21 @@ function handleError(err) {
     process.exit(-1);
   }
 }
-
-process.on("uncaughtException", function(err) {
+process.on("uncaughtException", function (err) {
   console.log(err.stack || err);
-  manager.restart(function(err){
+  manager.restart(function (err) {
     handleError(err);
     console.log("Restarted...");
   });
 });
-
-process.on("SIGINT", function() {
+process.on("SIGINT", function () {
   console.log("Shutting down...");
-  manager.stop(function(err){
+  manager.stop(function (err) {
     handleError(err);
     process.exit(0);
   });
 });
-
-manager.start(function(err) {
+manager.start(function (err) {
   handleError(err);
   console.log("Started...");
 });

@@ -10,6 +10,14 @@
     "connect": "1.8.4",
     "debug": "*"
   },
+  "scripts": {
+    "test": "make test",
+    "prepublish": "npm prune"
+  },
+  "bugs": {
+    "mail": "dev@jolira.com",
+    "url": "http://github.com/jolira/site-manager/issues"
+  },
   "devDependencies": {
     "markdown": "0.3.1",
     "ejs": "0.6.1",

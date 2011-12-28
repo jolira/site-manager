@@ -67,7 +67,7 @@ describe('Repo', function () {
     it('should load an emtpy array', function (done) {
       repo.load(function (err, data) {
         if (err) {
-            return done(err);
+          return done(err);
         }
         if (data.length !== 0) {
           throw new Error("invalid data");
@@ -91,9 +91,18 @@ describe('Repo', function () {
   });
 
   describe('#save()', function () {
-    it('should save and load without error', function (done) {
+    it('should save and load without error ad reload', function (done) {
       repo.save("x.json", "{}", function (err) {
-        done(err);
+        repo.load("x.json", function(err, data) {
+          if (err) {
+            return done(err);
+          }
+          if (data !== "{}") {
+            throw new Error("unexpected data" + data);
+          }
+
+          done();
+        });
       });
     });
   });

@@ -16,7 +16,7 @@ describe('Repo', function () {
           console.log(err.stack || err);
           throw err;
         }
-        done();
+        done(err);
       });
     });
   });

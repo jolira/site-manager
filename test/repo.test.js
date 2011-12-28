@@ -13,53 +13,86 @@ describe('Repo', function () {
   var testPath = path.join(process.env.HOME, repo.DEFAULT_NAME);
 
   function rmrf(dir, callback) {
-    fs.stat(dir, function(err, stats) {
-      if (err) {
-        return callback(err);
+    path.exists(dir, function(exists) {
+      if (!exists) {
+        return callback();
       }
 
-      if (!stats.isDirectory()) {
-        return fs.unlink(dir, callback);
-      }
-
-      var count = 0;
-      fs.readdir(dir, function(err, files) {
+      fs.stat(dir, function(err, stats) {
         if (err) {
           return callback(err);
         }
 
-        if (files.length < 1) {
-          return fs.rmdir(dir, callback);
+        if (!stats.isDirectory()) {
+          return fs.unlink(dir, callback);
         }
 
-        files.forEach(function(file) {
-          var sub = path.join(dir, file);
+        var count = 0;
+        fs.readdir(dir, function(err, files) {
+          if (err) {
+            return callback(err);
+          }
 
-          rmrf(sub, function(err) {
-            if (err) {
-              return callback(err);
-            }
+          if (files.length < 1) {
+            return fs.rmdir(dir, callback);
+          }
 
-            if (++count == files.length) {
-              fs.rmdir(dir, callback);
-            }
+          files.forEach(function(file) {
+            var sub = path.join(dir, file);
+
+            rmrf(sub, function(err) {
+              if (err) {
+                return callback(err);
+              }
+
+              if (++count == files.length) {
+                fs.rmdir(dir, callback);
+              }
+            });
           });
         });
       });
     });
   }
 
-  after(function(done) {
+  afterEach(function(done) {
     rmrf(testPath, done);
   });
 
-  before(function(done) {
+  afterEach(function(done) {
     rmrf(testPath, done);
   });
 
   describe('#load()', function () {
-    it('should load without error', function (done) {
-      repo.load(function (err) {
+    it('should load an emtpy array', function (done) {
+      repo.load(function (err, data) {
+        if (err) {
+            return done(err);
+        }
+        if (data.length !== 0) {
+          throw new Error("invalid data");
+        }
+
+        done();
+      });
+    });
+    it('should not load', function (done) {
+      repo.load("x/y.json", function (err, data) {
+        if (err) {
+            return done(err);
+        }
+        if (data) {
+          throw new Error("unexpected data" + data);
+        }
+
+        done();
+      });
+    });
+  });
+
+  describe('#save()', function () {
+    it('should save and load without error', function (done) {
+      repo.save(function (err) {
         done(err);
       });
     });

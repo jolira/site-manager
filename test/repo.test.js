@@ -13,6 +13,7 @@ describe('Repo', function () {
     it('should load without error', function (done) {
       repo.load(function (err) {
         if (err) {
+          console.log(err.stack || err);
           throw err;
         }
         done();

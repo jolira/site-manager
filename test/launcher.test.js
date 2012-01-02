@@ -3,9 +3,9 @@
  *
  */
 
-var Manager = require('../lib/manager');
+var Manager = require('../lib/launcher');
 
-describe('Manager', function () {
+describe('Launcher', function () {
   describe('#start()', function () {
     it('should save without error', function (done) {
       var manager = new Manager(undefined);

@@ -3,12 +3,18 @@
  *
  */
 
-var Manager = require('../lib/launcher');
+var Launcher = require('../lib/launcher');
 
 describe('Launcher', function () {
   describe('#start()', function () {
     it('should save without error', function (done) {
-      var manager = new Manager(undefined);
+      var connect = {
+        logger: function() {},
+        createServer: function() {
+          return { listen : function() {}};
+        }
+      };
+      var manager = new Launcher(connect);
 
       manager.start(function (err) {
         if (err) {

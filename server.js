@@ -2,10 +2,10 @@
  * (C) 2012 Jolira; distributed under AGPL 3.0
  *
  */
-var repo = require('repo');
 var connect = require('connect');
+var repo = require('./lib/repo');
 var Launcher = require('./lib/launcher');
-var launcher = new Launcher(connect);
+var launcher = new Launcher(connect, repo);
 
 function handleError(err) {
   if (err) {

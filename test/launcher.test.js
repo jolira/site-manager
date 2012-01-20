@@ -15,8 +15,9 @@ describe('Launcher', function () {
         }
       };
       var repo = {
-        load: function(callback) {
-            callback(undefined, [ "x" ]);
+        load: function() {
+            var callback = arguments.length < 2 ? arguments[0] : arguments[1];
+            callback(undefined, arguments.length < 2 ? [ true ] : "[true, false]");
         }
       };
       var manager = new Launcher(connect, repo);

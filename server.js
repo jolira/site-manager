@@ -4,8 +4,9 @@
  */
 var connect = require('connect');
 var repo = require('./lib/repo');
+var editor = require('./lib/editor');
 var Launcher = require('./lib/launcher');
-var launcher = new Launcher(connect, repo);
+var launcher = new Launcher(connect, repo, editor);
 
 function handleError(err) {
   if (err) {

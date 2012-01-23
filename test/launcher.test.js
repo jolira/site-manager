@@ -10,8 +10,12 @@ describe('Launcher', function () {
     it('should launch without error', function (done) {
       var connect = {
         logger: function() {},
+        vhost: function() {},
         createServer: function() {
-          return { listen : function() {}};
+          return {
+            use: function() {},
+            listen : function() {}
+          };
         }
       };
       var repo = {

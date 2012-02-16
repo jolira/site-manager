@@ -1,34 +1,32 @@
-/**
- * (C) 2012 Jolira; distributed under AGPL 3.0
- *
- */
-var connect = require('connect');
-var repo = require('./lib/repo');
-var editor = require('./lib/editor');
-var Launcher = require('./lib/launcher');
-var launcher = new Launcher(connect, repo, editor);
+(function (exports, __dirname) {
+  "use strict";
 
-function handleError(err) {
-  if (err) {
-    console.log(err.stack || err);
-    process.exit(-1);
+  var debug = require("./lib/debug");  
+  var path = require("path");
+  var launcher = require('./lib/launcher')(path.join(__dirname, "sites"));
+
+  function handleError(err) {
+    if (err) {
+      console.error(err.stack || err);
+      process.exit(-1);
+    }
   }
-}
-process.on("uncaughtException", function (err) {
-  console.log(err.stack || err);
-  launcher.restart(function (err) {
-    handleError(err);
-    console.log("Restarted...");
+  process.on("uncaughtException", function (err) {
+    console.log(err.stack || err);
+    launcher.restart(function (err) {
+      handleError(err);
+      debug("Restarted...");
+    });
   });
-});
-process.on("SIGINT", function () {
-  console.log("Shutting down...");
-  launcher.stop(function (err) {
-    handleError(err);
-    process.exit(0);
+  process.on("SIGINT", function () {
+    debug("Shutting down...");
+    launcher.stop(function (err) {
+      handleError(err);
+      process.exit(0);
+    });
   });
-});
-launcher.start(function (err) {
-  handleError(err);
-  console.log("Started...");
-});
+  launcher.start(function (err) {
+    handleError(err);
+    debug("Started...");
+  });
+})(exports, __dirname);

@@ -25,7 +25,7 @@
       process.exit(0);
     });
   });
-  launcher.start(function (err) {
+  launcher.start(3e3, function (err) {
     handleError(err);
     debug("Started...");
   });

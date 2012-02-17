@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "description": "Create & manage mobile & desktop sites using HTML5 & CSS3",
   "keywords": ["site", "html5"],
-  "repository": "git://github.com/jolira/site-manager.git",
   "author": "Joachim Kainz <jfk@jolira.com> (http://www.jolira.com)",
   "repository": {
     "url": "https://github.com/jolira/site-manager.git",
@@ -21,7 +20,7 @@
     "uglify-js": "*"
   },
   "scripts": {
-    "test": "make test",
+    "test": "jake test",
     "prepublish": "npm prune"
   },
   "bugs": {

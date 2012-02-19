@@ -1,15 +1,72 @@
 (function (exports, __dirname) {
   "use strict";
 
-  var debug = require("./lib/debug");  
+  var debug = require("./lib/debug");
   var path = require("path");
-  var launcher = require('./lib/launcher')(path.join(__dirname, "sites"));
 
-  var port = process.argv.length > 2 ? process.argv[2] : 3e3;
-  var iscID = process.argv.length > 3 ? process.argv[3] : undefined;
-  var iscKey = process.argv.length > 4 ? process.argv[4] : undefined;
+  function getSitesDirectory() {
+    if (process.argv.length > 2) {
+      return process.argv[2];
+    }
 
-  debug("command-line", port, iscID, iscKey);
+    if (process.env.SITE_MANAGER_DIR) {
+      return process.env.SITE_MANAGER_DIR;
+    }
+
+    return path.join(__dirname, "sites");
+  }
+
+  function getPort() {
+    if (process.argv.length > 3) {
+      return process.argv[3];
+    }
+
+    if (process.env.SITE_MANAGER_PORT) {
+      return process.env.SITE_MANAGER_PORT;
+    }
+
+    return 3e3;
+  }
+
+  function getISCID() {
+    if (process.argv.length > 4) {
+      return process.argv[4];
+    }
+
+    if (process.env.ISC_ID) {
+      return process.env.ISC_ID;
+    }
+
+    console.error("No ISC ID (DShield user id) specifed. Please register " +
+      "at http://goo.gl/NUpFW and specify one using the ISC_ID environment " +
+      "variable.");
+  }
+
+  function getISCKey() {
+    if (process.argv.length > 5) {
+      return process.argv[5];
+    }
+
+    if (process.env.ISC_KEY) {
+      return process.env.ISC_KEY;
+    }
+
+    console.error("No ISC key specifed. Please register " +
+      "at ttp://goo.gl/NUpFW and specify one using the ISC_KEY " +
+      "envrionment variable.");
+  }
+
+  var sitesDir = getSitesDirectory();
+  var port = getPort();
+  var iscID = getISCID();
+  var iscKey = getISCKey();
+
+  debug("sitesDir:", sitesDir);
+  debug("port:", port);
+  debug("iscID:", iscID);
+  debug("iscKey:", iscKey);
+
+  var launcher = require('./lib/launcher')(sitesDir);
 
   function handleError(err) {
     if (err) {

@@ -60,12 +60,6 @@
   var port = getPort();
   var iscID = getISCID();
   var iscKey = getISCKey();
-
-  debug("sitesDir:", sitesDir);
-  debug("port:", port);
-  debug("iscID:", iscID);
-  debug("iscKey:", iscKey);
-
   var launcher = require('./lib/launcher')(sitesDir);
 
   function handleError(err) {

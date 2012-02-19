@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "name": "simple-example",
+  "version": "0.0.1",
+  "description": "a simple example for how to use the site-manager",
+  "author": "Joachim Kainz <jfk@jolira.com> (http://www.jolira.com)",
+  "repository": {
+    "url": "https://github.com/jolira/simple-example.git",
+    "type": "git"
+  },
+  "dependencies": {
+    "underscore": "< 2.0.0",
+    "connect": "< 2.0.0"
+  },
+  "bugs": {
+    "mail": "dev@jolira.com",
+    "url": "http://github.com/jolira/simple-example/issues"
+  },
+  "main": "index"
+}

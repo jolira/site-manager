@@ -3,9 +3,7 @@ node_modules
 sites/*
 .nide
 *~
-<<<<<<< HEAD
 *.log
-=======
 
 .idea/modules.xml
 
@@ -20,4 +18,4 @@ sites/*
 .idea/site-manager.iml
 
 .idea/workspace.xml
->>>>>>> add idea ignore
+

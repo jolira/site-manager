@@ -37,7 +37,7 @@
       return process.env.ISC_ID;
     }
 
-    console.error("No ISC ID (DShield user id) specifed. Please register " +
+    console.error("No ISC ID (DShield user id) specified. Please register " +
       "at http://goo.gl/NUpFW and specify one using the ISC_ID environment " +
       "variable.");
   }
@@ -51,7 +51,7 @@
       return process.env.ISC_KEY;
     }
 
-    console.error("No ISC key specifed. Please register " +
+    console.error("No ISC key specified. Please register " +
       "at ttp://goo.gl/NUpFW and specify one using the ISC_KEY " +
       "envrionment variable.");
   }

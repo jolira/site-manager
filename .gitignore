@@ -4,6 +4,7 @@ sites/*
 .nide
 *~
 *.log
+<<<<<<< HEAD
 
 .idea/modules.xml
 
@@ -19,3 +20,6 @@ sites/*
 
 .idea/workspace.xml
 
+=======
+.idea
+>>>>>>> fixing .gitignore

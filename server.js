@@ -52,7 +52,7 @@
     }
 
     console.error("No ISC key specified. Please register " +
-      "at ttp://goo.gl/NUpFW and specify one using the ISC_KEY " +
+      "at http://goo.gl/NUpFW and specify one using the ISC_KEY " +
       "envrionment variable.");
   }
 

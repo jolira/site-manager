@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "name": "advanced-example",
+  "version": "0.0.1",
+  "description": "a less simple example for how to use the site-manager",
+  "author": "Joachim Kainz <jfk@jolira.com> (http://www.jolira.com)",
+  "repository": {
+    "url": "https://github.com/jolira/advanced-example.git",
+    "type": "git"
+  },
+  "dependencies": {
+  },
+  "bugs": {
+    "mail": "dev@jolira.com",
+    "url": "http://github.com/jolira/advanced-example/issues"
+  },
+  "main": "index"
+}

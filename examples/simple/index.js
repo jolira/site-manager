@@ -9,6 +9,11 @@
         "public": path.join(__dirname, "public"),
         "googleAnalyticsWebPropertyID": "UA-3602945-1",
         "title": "Simple Site-Manager Example",
-        "description": "A simple demo for how to use the site-manager (http://github.com/jolira/site-manager)"
+        "metas": [
+            {
+                "description": "A simple demo for how to use the site-manager " +
+                    "(http://github.com/jolira/site-manager)"
+            }
+        ]
     };
 })(module);

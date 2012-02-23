@@ -13,7 +13,13 @@
         opts.public = path.join(__dirname, "public");
         opts.googleAnalyticsWebPropertyID = "UA-3602945-1";
         opts.title = "More Advanced Site-Manager Example";
-        opts.description = "A more advanced demo for how to use the site-manager (http://github.com/jolira/site-manager)";
+        opts.metas.push([
+            {
+                "name": "description",
+                "description": "A more advanced demo for how to use the site-manager " +
+                    "(http://github.com/jolira/site-manager"
+            }
+        ]);
 
         return cb(undefined, opts);
     };

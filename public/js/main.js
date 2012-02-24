@@ -9,13 +9,13 @@ require.config({
     paths: {
         // Major libraries
         jquery: 'libs/jquery/jquery-1.7.1',
-        underscore: 'libs/underscore/underscore-min', // https://github.com/amdjs
-        backbone:'libs/backbone/backbone-min', // https://github.com/amdjs
+        underscore: 'libs/underscore/underscore-1.3.1',
+        backbone:'libs/backbone/backbone-min'//, // https://github.com/amdjs
         //sinon: 'libs/sinon/sinon.js',
 
         // Require.js plugins
-        text: 'libs/require-1.0.7/text',
-        order: 'libs/require-1.0.7/order'//,
+        //text: 'libs/require/text-1.0.7'//,
+        //order: 'libs/require-1.0.7/order'//,
 
         // Just a short cut so we can put our html outside the js dir
         // When you have HTML/CSS designers this aids in keeping them out of the js directory

@@ -3,10 +3,11 @@
 
 
 /* TEAM */
-  <your title>: <your name>
-  Site:
-  Twitter:
-  Location:
+  Developer: Joachim Kainz
+  Developer: Gabe Hopper
+  Site: www.jolira.com
+  Twitter: 4jolira
+  Location: San Francisco
 
 /* THANKS */
   Names (& URL):

@@ -16,7 +16,7 @@
         opts.metas.push([
             {
                 "name": "description",
-                "description": "A more advanced demo for how to use the site-manager " +
+                "content": "A more advanced demo for how to use the site-manager " +
                     "(http://github.com/jolira/site-manager"
             }
         ]);

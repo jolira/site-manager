@@ -11,7 +11,8 @@
         "title": "Simple Site-Manager Example",
         "metas": [
             {
-                "description": "A simple demo for how to use the site-manager " +
+                "name": "description",
+                "content": "A simple demo for how to use the site-manager " +
                     "(http://github.com/jolira/site-manager)"
             }
         ]

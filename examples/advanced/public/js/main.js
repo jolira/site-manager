@@ -18,11 +18,16 @@ require.config({
     }
 });
 
-require([
-    'view/app',
-    'router'
-], function(AppView, Router){
-    var appView = new AppView;
-    appView.render();
-    Router.initialize();
-});
+require (["jquery", "underscore"], function($,_) {
+        "use strict";
+        console.log($);
+        console.log(_);
+    }
+);
+
+//require([
+//    'view/app','router'], function(AppView, Router){
+//    var appView = new AppView;
+//    appView.render();
+//    Router.initialize();
+//});

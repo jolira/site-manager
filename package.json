@@ -1,35 +1,37 @@
 {
-  "name": "site-manager",
-  "version": "0.0.1",
-  "description": "Create & manage mobile & desktop sites using HTML5 & CSS3",
-  "keywords": ["site", "html5"],
-  "author": "Joachim Kainz <jfk@jolira.com> (http://www.jolira.com)",
-  "repository": {
-    "url": "https://github.com/jolira/site-manager.git",
-    "type": "git"
-  },
-  "dependencies": {
-    "handlebars": "*",
-    "404project" : "*",
-    "underscore": "< 2.0.0",
-    "connect": "< 2.0.0",
-    "batch": "*"
-  },
-  "devDependencies": {
-    "debug": "*",
-    "horaa": "*",
-    "vows": "*",
-    "jake": "*",
-    "uglify-js": "*"
-  },
-  "scripts": {
-    "test": "jake test",
-    "prepublish": "npm prune"
-  },
-  "bugs": {
-    "mail": "dev@jolira.com",
-    "url": "http://github.com/jolira/site-manager/issues"
-  },
-  "main": "server",
-  "engines": { "node": ">= 0.5.0 < 0.7.0" }
+    "name":"site-manager",
+    "version":"0.0.1",
+    "description":"Create & manage mobile & desktop sites using HTML5 & CSS3",
+    "keywords":["site", "html5"],
+    "author":"Joachim Kainz <jfk@jolira.com> (http://www.jolira.com)",
+    "repository":{
+        "url":"https://github.com/jolira/site-manager.git",
+        "type":"git"
+    },
+    "dependencies":{
+        "handlebars":"*",
+        "404project":"*",
+        "underscore":"< 2.0.0",
+        "connect":"< 2.0.0",
+        "batch":"*"
+    },
+    "devDependencies":{
+        "debug":"*",
+        "horaa":"*",
+        "vows":"*",
+        "jake":"*",
+        "uglify-js":"*"
+    },
+    "scripts":{
+        "test":"jake test",
+        "prepublish":"npm prune"
+    },
+    "bugs":{
+        "mail":"dev@jolira.com",
+        "url":"http://github.com/jolira/site-manager/issues"
+    },
+    "main":"server",
+    "engines":{
+        "node":">= 0.5.0 < 0.7.0"
+    }
 }

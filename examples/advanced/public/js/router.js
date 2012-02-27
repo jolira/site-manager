@@ -16,32 +16,31 @@ define([
             '*actions':'defaultAction'
         },
         services:function () {
-            require(['views/services/page'], function (ServicesPage) {
-                var servicesPage = new ServicesPage();
+            require(['views/services/page'], function (Page) {
+                var servicesPage = new Page();
                 servicesPage.render();
             });
         },
 //        company:function () {
-//            require(['views/optimize/page'], function (ModulePage) {
-//                var modulePage = new ModulePage();
-//                modulePage.render();
+//            require(['views/company/page'], function (Page) {
+//                var companyPage = new Page();
+//                companyPage.render();
 //            });
 //        },
 //        technology:function () {
-//            require(['views/dashboard/page'], function (DashboardPage) {
-//                var dashboardPage = new DashboardPage();
-//                dashboardPage.render();
+//            require(['views/technology/page'], function (Page) {
+//                var page = new Page();
+//                page.render();
 //            });
 //        },
         home:function () {
-            require(['view/home/page'], function (HomePage) {
-                var homePage = new HomePage();
+            require(['view/home/page'], function (Page) {
+                var homePage = new Page();
                 homePage.render();
             });
         },
         defaultAction:function (actions) {
             // We have no matching route, lets display the dashboard
-
             this.home();
         }
     });

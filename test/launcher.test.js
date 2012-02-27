@@ -1,22 +1,37 @@
 /*jslint white: true, forin: false, node: true, indent: 4 */
-(function () {
+(function (module) {
     "use strict";
 
     var NO_SITE_DIR = "./no_sites",
         ONE_SITE_DIR = "./one_site",
         LISTEN_PORT = 30000,
         vows = require('vows'),
+        path = require('path'),
         horaa = require('horaa'),
         fs = horaa('fs'),
         assert = require('assert'),
         launcher = require('../lib/launcher'),
         connect = horaa("connect");
 
+    function fileToArray(file) {
+        if (file === '/') {
+            return [];
+        }
+
+        var base = path.basename(file),
+            result = base === file ? [] : base === file ? [] : fileToArray(path.dirname(file));
+
+        result.push(base);
+
+        return result;
+    }
+
     fs.hijack('readFile', function (file, encoding, cb) {
         assert.equal(encoding, "utf8");
         assert.ok(/package\.json$/.test(file), file + " does not end with package.json");
 
-        if ("one_site/test-file-package.json") {
+        var dir = fileToArray(file);
+        if (dir[0] === "one_site" && dir[1] === "test-file" && dir[2] === "package.json") {
             return cb(undefined, "{}");
         }
 
@@ -43,7 +58,7 @@
         // nothing
     });
 
-// Create a Test Suite
+    // Create a Test Suite
     vows.describe('start a server').addBatch({
         'with an empty directory': {
             topic: function () {
@@ -105,5 +120,5 @@
                 }
             }
         }
-    }).run(); // Run it
-})();
+    }).export(module);
+})(module);

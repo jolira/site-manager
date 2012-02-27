@@ -32,21 +32,34 @@
 
 // Create a Test Suite
     vows.describe('start a simple server').addBatch({
-        'start': {
+        'with an empty directory': {
             topic: function () {
                 var self = this,
                     svr = launcher(NO_SITE_DIR);
 
-                svr.start(LISTEN_PORT, "1", "1", function(err) {
+                svr.start(LISTEN_PORT, "1", "1", function (err) {
                     if (err) {
-                        return self.callback();
+                        return self.callback(undefined, svr);
                     }
 
-                    self.callback("no sites");
+                    self.callback(new Error("an 'no sites' error should have been reported"));
                 });
             },
-            'successful start': function () {
-                // done
+            'causes the start to fail': {
+                "topic": function (svr) {
+                    var self = this;
+
+                    svr.stop(function (err) {
+                        if (err) {
+                            return self.callback(undefined, svr);
+                        }
+
+                        self.callback(new Error("server should have signaled that no site was started"));
+                    });
+                },
+                "and stopping to fail also": function (err, result) {
+                    // works great.
+                }
             }
         }
     }).run(); // Run it

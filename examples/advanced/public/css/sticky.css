@@ -1,51 +1,14 @@
-/*
-Sticky Footer Solution
-by Steve Hatcher
-http://stever.ca
-http://www.cssstickyfooter.com
-*/
-
-* {margin:0;padding:0;}
-
-/* must declare 0 margins on everything, also for main layout components use padding, not
-vertical margins (top and bottom) to add spacing, else those margins get added to total height
-and your footer gets pushed down a bit more, creating vertical scroll bars in the browser */
-
+* {margin: 0;}
 html, body {height: 100%;}
-
-#wrap {min-height: 100%;} /*originally called wrap */
-
-#main {
-    /* overflow:auto; */ /* ffox fix */
-    overflow-x: hidden;  /* ffox fix */
-    overflow-y: auto;    /* ffox fix */
-    padding-bottom: 150px;}  /* must be same height as the footer */
-
-
-footer {position: relative;
-    margin-top: -150px; /* negative value of footer height */
-    height: 150px;
-    clear:both;}
-
-/*Opera Fix*/
-body:before {/* thanks to Maleika (Kohoutec)*/
-    content:"";
-    height:100%;
-    float:left;
-    width:0;
-    margin-top:-32767px;/* thank you Erik J - negate effect of float*/
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -100px; /* Set footer height. */
+    overflow: scroll;
 }
-
-/* IE8 hack to get it to apply margin auto centering to element inside this one */
-#wrap {width:100%}
-
-
-
-/* Header */
-#header-wrap {width:980px;margin:0 auto;padding:0 10px 0 10px}
-
-/* Content Area */
-#main {width:980px;margin:0 auto;clear:both;padding-right:10px;padding-left:10px}
-
-/* Footer */
-#footer-wrap {width:980px;margin:0 auto;background: url('images/duct-tape.jpg') no-repeat;height:140px;line-height:1.1em;padding:0 10px 0 10px}
+footer, .push {
+    height: 100px; /* Set footer height. */
+    /* clear: both; */ /* Muti-column fix.*/
+}
+footer {background: blue;}

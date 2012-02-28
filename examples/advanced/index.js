@@ -9,6 +9,7 @@
     module.exports = {
         "hostname": "advanced.jolira.com",
         "public": pubdir,
+        "stylesheets": ["css/style.css", "css/sticky.css"],
         "googleAnalyticsWebPropertyID": "UA-3602945-1",
         "title": "More Advanced Site-Manager Example",
         "metas": [

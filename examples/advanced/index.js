@@ -18,7 +18,7 @@
                     "(http://github.com/jolira/site-manager)"
             }
         ],
-        "html-files": [
+        "htmlFiles": [
             path.join(templates, "layout.html")
         ]
     };

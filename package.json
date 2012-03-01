@@ -20,7 +20,8 @@
         "horaa":"*",
         "vows":"*",
         "jake":"*",
-        "uglify-js":"*"
+        "uglify-js":"*",
+        "nodeunit": "*"
     },
     "scripts":{
         "test":"jake test",

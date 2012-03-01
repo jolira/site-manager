@@ -8,7 +8,9 @@
 
     desc('Run tests');
     task('tests', [], function () {
-        jake.exec(["./node_modules/.bin/vows test/debug.test.js"], function () {
+        jake.exec(["./node_modules/.bin/vows test/debug.test.js",
+            "./node_modules/.bin/vows test/launcher.test.js",
+            "./node_modules/.bin/nodeunit test/site.test.js"], function () {
             console.log('All tests passed.');
             complete();
         }, {stdout: true});

@@ -3,11 +3,11 @@
     "use strict";
 
     desc('The default task. Runs tests.');
-    task('default', ['tests'], function () {
+    task('default', ['test'], function () {
     });
 
     desc('Run tests');
-    task('tests', [], function () {
+    task('test', [], function () {
         jake.exec(["./node_modules/.bin/vows test/debug.test.js",
             "./node_modules/.bin/vows test/launcher.test.js",
             "./node_modules/.bin/nodeunit test/site.test.js"], function () {

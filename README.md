@@ -4,7 +4,7 @@ site-manager
 Creating great mobile & desktop sites with HTML5 & CSS3 should not really be hard. This project tries to make
 it simpler.
 
-Getting Started:
+Getting Started
 -----------------
 
 Install nodejs navigate to: http://nodejs.org/ and click Download. Once you've downloaded scroll down to the Build section to see how to configure and use it.
@@ -18,11 +18,13 @@ Run the server with example sites: `node server.js /path/to/site-manager/example
 To enable debugging add environment variable:
 `NODE_DEBUG=site-manager`
 
-Testing:
+Testing
 -----------------
 
 Install jake: `npm install -g jake`
+
 Note that Jake is a system-level tool, and wants to be installed globally.
+
 To execute tests execute: `jake`
 
 ## License

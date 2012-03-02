@@ -25,7 +25,7 @@ Install jake: `npm install -g jake`
 
 Note that Jake is a system-level tool, and wants to be installed globally.
 
-To execute tests execute: `jake`
+To execute tests execute: `jake test`
 
 ## License
 

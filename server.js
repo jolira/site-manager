@@ -23,7 +23,9 @@
             return process.env.SITE_MANAGER_DIR;
         }
 
-        return path.join(__dirname, "sites");
+        var cwd = process.cwd();
+
+        return path.join(cwd, "sites");
     }
 
     function getPort() {

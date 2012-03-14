@@ -1,4 +1,4 @@
-site-manager
+site-manager [<img src="https://secure.travis-ci.org/jolira/site-manager.png" />](http://travis-ci.org/#!/jolira/site-manager)
 ========================================
 
 Creating great mobile & desktop sites with HTML5 & CSS3 should not really be hard. This project tries to make

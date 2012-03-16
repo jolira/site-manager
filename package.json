@@ -15,13 +15,15 @@
         "connect":"< 2.0.0",
         "batch":"*"
     },
+    "bin": {
+        "site-manager": "./bin/site-manager"
+    },
     "devDependencies":{
         "debug":"*",
         "horaa":"*",
         "vows":"*",
         "jake":"*",
-        "uglify-js":"*",
-        "nodeunit": "*"
+        "uglify-js":"*"
     },
     "scripts":{
         "test":"jake test",

@@ -38,7 +38,7 @@
                     if (err) {
                         this.callback();
                     }
-                    this.callback("shoud produce an error");
+                    this.callback("should produce an error");
                 });
             },
             'should not succeed': {
@@ -53,7 +53,7 @@
                     if (err) {
                         this.callback();
                     }
-                    this.callback("shoud produce an error");
+                    this.callback("should produce an error");
                 });
             },
             'should not succeed': {

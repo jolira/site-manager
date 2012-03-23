@@ -11,8 +11,8 @@
     "dependencies":{
         "handlebars":"*",
         "404project":"*",
-        "underscore":"< 2.0.0",
-        "connect":"< 2.0.0",
+        "underscore":"*",
+        "connect":"*",
         "batch":"*"
     },
     "bin": {

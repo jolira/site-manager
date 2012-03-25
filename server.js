@@ -8,6 +8,7 @@
     var debug = require("./lib/debug"),
         _launcher = require('./lib/launcher'),
         path = require("path"),
+        watch = require("directory-tree-watcher"),
         launcher,
         sitesDir,
         port,
@@ -74,12 +75,35 @@
     iscKey = getISCKey();
     launcher = _launcher(sitesDir);
 
-    process.on("uncaughtException", function (err) {
+    function restart() {
         launcher.restart(function (err) {
             handleError(err);
             debug("Restarted...");
+
+            if (!err) {
+                watchAll();
+            }
         });
+    }
+
+    process.on("uncaughtException", function (err) {
+        restart();
     });
+
+    function watchAll() {
+        var watcher;
+
+        debug("Watching", sitesDir);
+        watch(sitesDir, function(){
+            if (watcher) {
+                watcher.close();
+            }
+
+            restart();
+        }, function(err, theWatcher) {
+            watcher = theWatcher;
+        });
+    }
 
     function handleError(err) {
         if (err) {
@@ -98,5 +122,9 @@
     launcher.start(port, iscID, iscKey, function (err) {
         handleError(err);
         debug("Started...");
+
+        if (!err) {
+            watchAll();
+        }
     });
 })(exports, __dirname);

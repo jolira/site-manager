@@ -9,6 +9,7 @@
         "type":"git"
     },
     "dependencies":{
+        "directory-tree-watcher":"*",
         "handlebars":"*",
         "404project":"*",
         "underscore":"*",

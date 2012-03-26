@@ -2,8 +2,8 @@
 (function (module) {
     "use strict";
 
-    var NO_SITE_DIR = "./no_sites",
-        ONE_SITE_DIR = "./one_site",
+    var NO_SITE_DIR = "/no_sites",
+        ONE_SITE_DIR = "/one_site",
         LISTEN_PORT = 30000,
         vows = require('vows'),
         path = require('path'),

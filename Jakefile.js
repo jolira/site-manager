@@ -8,7 +8,7 @@
 
     desc('Run tests');
     task('test', [], function () {
-        jake.exec(["./node_modules/.bin/vows"], function () {
+        jake.exec(["./node_modules/.bin/vows --trace"], function () {
             console.log('All tests passed.');
             complete();
         }, {stdout: true});

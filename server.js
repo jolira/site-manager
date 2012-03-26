@@ -1,12 +1,14 @@
-(function (exports, __dirname) {
+(function () {
     "use strict";
 
     process.on("uncaughtException", function (err) {
         console.error(err.stack || err);
     });
 
-    var debug = require("./lib/debug"),
-        _launcher = require('./lib/launcher'),
+    var PORT = 3e3,
+        RESTART_DELAY = 2500,
+        debug = require("./lib/debug"),
+        theLauncher = require('./lib/launcher'),
         path = require("path"),
         watch = require("directory-tree-watcher"),
         watchAll,
@@ -17,7 +19,7 @@
         iscKey;
 
     function getSitesDirectory() {
-        if (process.argv.length > 2) {
+        if (2 < process.argv.length) {
             return process.argv[2];
         }
 
@@ -31,7 +33,7 @@
     }
 
     function getPort() {
-        if (process.argv.length > 3) {
+        if (3 < process.argv.length) {
             return process.argv[3];
         }
 
@@ -39,11 +41,11 @@
             return process.env.SITE_MANAGER_PORT;
         }
 
-        return 3e3;
+        return PORT;
     }
 
     function getISCID() {
-        if (process.argv.length > 4) {
+        if (4 < process.argv.length) {
             return process.argv[4];
         }
 
@@ -57,7 +59,7 @@
     }
 
     function getISCKey() {
-        if (process.argv.length > 5) {
+        if (5 < process.argv.length) {
             return process.argv[5];
         }
 
@@ -70,24 +72,36 @@
             "envrionment variable.");
     }
 
+    function handleError(err) {
+        if (err) {
+            console.error(err.stack || err);
+            process.exit(-1);
+        }
+    }
+
     sitesDir = getSitesDirectory();
     port = getPort();
     iscID = getISCID();
     iscKey = getISCKey();
-    launcher = _launcher(sitesDir);
+    launcher = theLauncher(sitesDir);
 
-    function restart() {
-        launcher.restart(function (err) {
+    function start(){
+        launcher.start(port, iscID, iscKey, function (err) {
+            debug("Started...");
             handleError(err);
-            debug("Restarted...");
-
-            if (!err) {
-                watchAll();
-            }
+            watchAll();
         });
     }
 
-    process.on("uncaughtException", function (err) {
+    function restart() {
+        debug("Restarting...");
+        launcher.stop(function (err) {
+            handleError(err);
+            start();
+        });
+    }
+
+    process.on("uncaughtException", function () {
         restart();
     });
 
@@ -100,18 +114,11 @@
                 watcher.close();
             }
 
-            restart();
+            setTimeout(restart, RESTART_DELAY);
         }, function(err, theWatcher) {
             watcher = theWatcher;
         });
-    }
-
-    function handleError(err) {
-        if (err) {
-            console.error(err.stack || err);
-            process.exit(-1);
-        }
-    }
+    };
 
     process.on("SIGINT", function () {
         debug("Shutting down...");
@@ -120,12 +127,5 @@
             process.exit(0);
         });
     });
-    launcher.start(port, iscID, iscKey, function (err) {
-        debug("Started...");
-        handleError(err);
-
-        if (!err) {
-            watchAll();
-        }
-    });
-})(exports, __dirname);
+    start();
+})();

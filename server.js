@@ -9,6 +9,7 @@
         _launcher = require('./lib/launcher'),
         path = require("path"),
         watch = require("directory-tree-watcher"),
+        watchAll,
         launcher,
         sitesDir,
         port,
@@ -90,7 +91,7 @@
         restart();
     });
 
-    function watchAll() {
+    watchAll = function() {
         var watcher;
 
         debug("Watching", sitesDir);
@@ -120,8 +121,8 @@
         });
     });
     launcher.start(port, iscID, iscKey, function (err) {
-        handleError(err);
         debug("Started...");
+        handleError(err);
 
         if (!err) {
             watchAll();

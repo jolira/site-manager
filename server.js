@@ -108,7 +108,6 @@
     watchAll = function() {
         var watcher;
 
-        debug("Watching", sitesDir);
         watch(sitesDir, function(){
             if (watcher) {
                 watcher.close();

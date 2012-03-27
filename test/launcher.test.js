@@ -26,8 +26,7 @@
         return result;
     }
 
-    fs.hijack('readFile', function (file, encoding, cb) {
-        assert.equal(encoding, "utf8");
+    fs.hijack('stat', function (file, cb) {
         assert.ok(/package\.json$/.test(file), file + " does not end with package.json");
 
         var dir = fileToArray(file);

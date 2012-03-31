@@ -21,7 +21,7 @@ Getting Started
 Node.js 0.6 or better needs to be installed on your system. If you do not have node installed yet, please go to
 http://nodejs.org/, download the package for your operating system, and install it.
 
-One node is install, you can install the site-manaer using `sudo npm install -g site-manager`.
+Once node is install, you can install the site-manaer using `sudo npm install -g site-manager`.
 
 The site-manager runs third party modules. Examples for such modules can be found in the `examples` direcctory.
 

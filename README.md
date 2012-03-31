@@ -11,8 +11,9 @@ Key features of this package are:
   to organize their JavaScript.
 * _Change Detection_: The site-manager watches the file system for changes and automatically reloads a site when a
   change is detected.
-* _Manifest Generation_: The site-manager is creating a [html5
-  manifest](http://www.html5rocks.com/en/tutorials/appcache/beginner/) on the the fly and regenerates it as needed.
+* _Manifest_: The site-manager automatically updates [html5
+  manifest](http://www.html5rocks.com/en/tutorials/appcache/beginner/) when changes are detected the require reloading
+  the site.
 * HTML/JS/CSS Compression: not implemented yet
 
 Getting Started
@@ -80,5 +81,5 @@ To execute tests execute: `jake test`
 License
 -----------------
 
-[MIT License](https://raw.github.com/jolira/site-manager/master/LICENSE.txt).
+[MIT License](https://raw.github.com/jolira/site-manager/master/LICENSE.txt)
 

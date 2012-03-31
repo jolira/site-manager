@@ -108,7 +108,9 @@
     watchAll = function() {
         var watcher;
 
-        watch(sitesDir, function(){
+        watch(sitesDir, {
+            except: [".git"]
+        }, function(){
             if (watcher) {
                 watcher.close();
             }

@@ -1,1 +1,7 @@
+examples
+test
+.npmignore
+.travis.yml
+Jakefile.js
 .gitignore
+README.md

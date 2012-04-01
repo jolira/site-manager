@@ -5,6 +5,7 @@
 /*global require:false, console:false */
 
 // Require.js allows us to configure shortcut alias
+/*
 require.config({
     paths: {
         // Major libraries
@@ -22,8 +23,9 @@ require.config({
         //templates: '../templates'
     }
 });
-
+*/
 // Let's kick off the application
+/*
 require(["underscore", "backbone", "jquery", "zepto"], function (_, backbone, jQuery, zepto) {
     "use strict";
 
@@ -32,7 +34,7 @@ require(["underscore", "backbone", "jquery", "zepto"], function (_, backbone, jQ
     console.log("jQuery", jQuery);
     console.log("zepto", zepto);
 });
-
+*/
 //require([
 //    'views/app',
 //    'router'

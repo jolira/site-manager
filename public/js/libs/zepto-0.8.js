@@ -1,3 +1,4 @@
+define(function () {
 //     Zepto.js
 //     (c) 2010, 2011 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
@@ -502,8 +503,8 @@ var Zepto = (function() {
     return $;
 })();
 
-window.Zepto = Zepto;
-'$' in window || (window.$ = Zepto);
+//window.Zepto = Zepto;
+//'$' in window || (window.$ = Zepto);
 //     Zepto.js
 //     (c) 2010, 2011 Thomas Fuchs
 //     Zepto.js may be freely distributed under the MIT license.
@@ -1410,3 +1411,6 @@ window.Zepto = Zepto;
         $.fn[m] = function(callback){ return this.bind(m, callback) }
     });
 })(Zepto);
+
+return Zepto;
+});

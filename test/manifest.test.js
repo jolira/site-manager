@@ -8,13 +8,13 @@
         fs = horaa('fs'),
         manifest = require('../lib/manifest');
 
-    fs.hijack('readFile', function (file, cb) {
+    fs.hijack('readFile', function (file, encoding, cb) {
         return cb(undefined, "content");
     });
 
     vows.describe('manifest').addBatch({
         'create the filter': {
-            topic: manifest("/x/manifest.appcache"),
+            topic: manifest("/x/manifest.appcache", { maxAge: 0 }),
             'not requesting manifest.appcache': {
                 topic: function (filter) {
                     filter({}, {}, this.callback);
@@ -30,7 +30,6 @@
                     filter({
                         "url": "/manifest.appcache"
                     }, {
-
                     }, this.callback);
                 },
                 "" : function (err, result) {

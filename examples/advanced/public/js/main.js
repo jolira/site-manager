@@ -5,7 +5,7 @@
 require.config({
     paths: {
         // Major libraries
-        jquery: 'libs/jquery/jquery-1.7.1',
+        jquery: 'libs/zepto-0.8',
         underscore: 'libs/underscore/underscore-1.3.1-amdjs', //https://github.com/amdjs
         backbone: 'libs/backbone/backbone-0.9.1-amdjs', //https://github.com/amdjs
         // Require.js plugins
@@ -18,7 +18,7 @@ require.config({
     }
 });
 
-require (["jquery", "underscore"], function($,_) {
+require(["jquery", "underscore"], function ($, _) {
         "use strict";
         console.log($);
         console.log(_);

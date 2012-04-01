@@ -20,7 +20,8 @@
             }
         ],
         "htmlFiles": [
-            path.join(templates, "layout.html")
+            path.join(templates, "layout.html"),
+            path.join(templates, "phonegap.html")
         ]
     };
 })(module);

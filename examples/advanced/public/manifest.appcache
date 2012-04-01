@@ -2,7 +2,7 @@ CACHE MANIFEST
 
 CACHE:
 /favicon.ico
-css/style.css
+css/sticky.css
 js/main.js
 js/libs/modernizr-2.5.2.min.js
 js/libs/backbone/backbone-0.9.1-amdjs.js

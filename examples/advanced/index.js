@@ -20,8 +20,11 @@
             }
         ],
         "htmlFiles": [
-            path.join(templates, "layout.html"),
-            path.join(templates, "phonegap.html")
+            path.join(templates, "layout.html")
+        ],
+        "scripts": [
+            "js/libs/modernizr-2.5.2.min.js",
+            "js/libs/phonegap-1.4.1.js"
         ]
     };
 })(module);

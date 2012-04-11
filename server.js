@@ -121,7 +121,9 @@
         });
     };
 
-    process.on("SIGINT", function () {
+    var signal = process.platform === 'win32' ? 'CTRL_C_EVENT' : 'SIGINT';
+
+    process.on(signal, function () {
         debug("Shutting down...");
         launcher.stop(function (err) {
             handleError(err);

@@ -1,9 +1,12 @@
 {
     "name":"site-manager",
-    "version":"0.2.1",
+    "version":"0.3.0",
     "description":"Create & manage mobile & desktop sites using HTML5 & CSS3",
     "keywords":["site", "html5"],
-    "author":"Joachim Kainz <jfk@jolira.com> (http://www.jolira.com)",
+    "contributors": [
+        "Joachim Kainz <jfk@jolira.com> (http://www.jolira.com)",
+        "Gabe Hopper <gabe@jolira.com> (http://www.jolira.com)"
+    ],
     "repository":{
         "url":"https://github.com/jolira/site-manager.git",
         "type":"git"

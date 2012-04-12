@@ -12,6 +12,7 @@
         "type":"git"
     },
     "dependencies":{
+        "less":"*",
         "directory-tree-watcher":"*",
         "handlebars":"*",
         "404project":"*",

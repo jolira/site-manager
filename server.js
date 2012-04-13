@@ -6,7 +6,7 @@
     });
 
     var PORT = 3e3,
-        RESTART_DELAY = 2500,
+        RESTART_DELAY = 1500,
         debug = require("./lib/debug"),
         theLauncher = require('./lib/launcher'),
         path = require("path"),
@@ -109,7 +109,7 @@
         var watcher;
 
         watch(sitesDir, {
-            except: [".git"]
+            except: [".git", ".idea"]
         }, function(){
             if (watcher) {
                 watcher.close();

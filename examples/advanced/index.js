@@ -11,9 +11,8 @@
         defaults["public"] = pubdir;
         defaults.stylesheets = [
             "css/sticky.css",
-            "css/twitterbootstrap/variables.less",
-            "css/twitterbootstrap/mixins.less",
-            "css/twitterbootstrap/navbar.less"
+            "css/twitterbootstrap/bootstrap.less",
+            "css/twitterbootstrap/responsive.less"
         ];
         defaults.googleAnalyticsWebPropertyID = "UA-3602945-1";
         defaults.title = "More Advanced Site-Manager Example";

@@ -4,10 +4,11 @@
 
     var path = require("path"),
         templates = path.join(__dirname, "templates"),
-        pubdir = path.join(__dirname, "public");
+        pubdir = path.join(__dirname, "public"),
+        twitterbootstrap = path.join(__dirname, "twitterbootstrap");
 
     module.exports = function (defaults, cb, properties) {
-        var pubdirs = [pubdir];
+        var pubdirs = [pubdir, twitterbootstrap];
 
         defaults["public"].forEach(function (dir) {
             pubdirs.push(dir);
@@ -16,8 +17,22 @@
         defaults.hostname = "advanced.jolira.com";
         defaults.stylesheets = [
             "css/sticky.css",
-            "css/twitterbootstrap/bootstrap.less",
-            "css/twitterbootstrap/responsive.less"
+            "css/bootstrap.less",
+            "css/responsive.less"
+        ];
+        defaults.scripts = [
+            "js/libs/jquery/jquery-1.7.1.js",
+            "js/bootstrap-alert.js",
+            "js/bootstrap-button.js",
+            "js/bootstrap-carousel.js",
+            "js/bootstrap-collapse.js",
+            "js/bootstrap-dropdown.js",
+            "js/bootstrap-modal.js",
+            "js/bootstrap-scrollspy.js",
+            "js/bootstrap-tab.js",
+            "js/bootstrap-tooltip.js",
+            "js/bootstrap-transition.js",
+            "js/bootstrap-typeahead.js"
         ];
         defaults.googleAnalyticsWebPropertyID = "UA-3602945-1";
         defaults.title = "More Advanced Site-Manager Example";

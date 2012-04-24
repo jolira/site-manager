@@ -1,6 +1,7 @@
 test
 examples
 sites
+.idea
 .npmignore
 .travis.yml
 .gitignore

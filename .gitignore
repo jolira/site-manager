@@ -2,6 +2,7 @@
 node_modules
 sites/*
 .nide
+.idea
 *~
 *.log
 .idea

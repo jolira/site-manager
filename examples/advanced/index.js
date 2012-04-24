@@ -7,8 +7,13 @@
         pubdir = path.join(__dirname, "public");
 
     module.exports = function (defaults, cb, properties) {
+        var pubdirs = [pubdir];
+
+        defaults["public"].forEach(function (dir) {
+            pubdirs.push(dir);
+        });
+        defaults["public"] = pubdirs;
         defaults.hostname = "advanced.jolira.com";
-        defaults["public"] = pubdir;
         defaults.stylesheets = [
             "css/sticky.css",
             "css/twitterbootstrap/bootstrap.less",

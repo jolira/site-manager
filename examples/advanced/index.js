@@ -17,8 +17,8 @@
         defaults.hostname = "advanced.jolira.com";
         defaults.stylesheets = [
             "css/sticky.css",
-            "css/bootstrap.less",
-            "css/responsive.less"
+            "less/bootstrap.less",
+            "less/responsive.less"
         ];
         defaults.scripts = [
             "js/libs/jquery/jquery-1.7.1.js",

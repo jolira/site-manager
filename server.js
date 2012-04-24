@@ -101,7 +101,8 @@
         });
     }
 
-    process.on("uncaughtException", function () {
+    process.on("uncaughtException", function (exception) {
+        debug("uncaught exception", exception ? exception.stack || exception : null);
         restart();
     });
 

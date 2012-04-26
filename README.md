@@ -1,7 +1,7 @@
 site-manager [<img src="https://secure.travis-ci.org/jolira/site-manager.png" />](http://travis-ci.org/#!/jolira/site-manager)
 ========================================
 
-Creating great single-page apps with HTML5 & CSS3 should not really be hard, so this project tries to make it simpler.
+A simple little server for single-page application.
 
 Key features of this package are:
 
@@ -14,7 +14,8 @@ Key features of this package are:
 * _Manifest_: The site-manager automatically updates [html5
   manifest](http://www.html5rocks.com/en/tutorials/appcache/beginner/) when changes are detected the require reloading
   the site.
-* HTML/JS/CSS Compression: not implemented yet
+* _Developer Support_: The server monitors files and automatically restarts when changes are detected.
+* _Less_: Automatically compiles .less file into .css.
 
 Getting Started
 -----------------

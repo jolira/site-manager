@@ -9,13 +9,15 @@ Key features of this package are:
 * _HTML5Boilerplate_: Our default templates incorporate the latest & greatest boilerplate.
 * _RequireJS_: Teams can (optionally) use [Asynchronous Module Definition](https://github.com/amdjs/amdjs-api/wiki/AMD)
   to organize their JavaScript.
-* _Change Detection_: The site-manager watches the file system for changes and automatically reloads a site when a
+* _Auto Reloads_: The site-manager watches the file system for changes and automatically reloads a site when a
   change is detected.
+* _Less_: Automatically compiles .less files to ``text/css using``.
+* _Properties_: The site-manager loads ``.config.json`` files from the site directory. The site-manager also loads
+  properties from a ``~/.sitemanager.json`` file and passes the data to the different sites it serves.
 * _Manifest_: The site-manager automatically updates [html5
   manifest](http://www.html5rocks.com/en/tutorials/appcache/beginner/) when changes are detected the require reloading
   the site.
 * _Developer Support_: The server monitors files and automatically restarts when changes are detected.
-* _Less_: Automatically compiles .less file into .css.
 
 Getting Started
 -----------------

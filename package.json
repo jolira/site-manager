@@ -18,6 +18,7 @@
         "404project":"*",
         "underscore":"*",
         "connect":">= 2.0.3",
+        "winston": "*",
         "batch":"*"
     },
     "bin": {

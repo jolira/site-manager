@@ -7,7 +7,7 @@
         pubdir = path.join(__dirname, "public"),
         twitterbootstrap = path.join(__dirname, "twitterbootstrap");
 
-    module.exports = function (defaults, cb, properties) {
+    module.exports = function (defaults, cb, properties, app) {
         var pubdirs = [pubdir, twitterbootstrap];
 
         defaults["public"].forEach(function (dir) {

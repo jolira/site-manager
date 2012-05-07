@@ -30,7 +30,9 @@
     }
 
     function startMaster() {
-        var signals = process.platform === 'win32' ? ['CTRL_C_EVENT'] : ['SIGINT', 'SIGTERM'],
+        var signals = process.platform === 'win32' ?
+                ['CTRL_C_EVENT', 'CTRL_BREAK_EVENT', 'CTRL_CLOSE_EVENT', 'CTRL_SHUTDOWN_EVENT'] :
+                ['SIGINT', 'SIGTERM'],
             os = require('os'),
             numCPUs = os.cpus().length,
             workers = numCPUs * 2,

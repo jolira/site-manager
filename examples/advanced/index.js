@@ -53,5 +53,4 @@
 
         return cb(undefined, defaults);
     };
-})
-(module);
+})(module);

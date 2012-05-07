@@ -4,8 +4,6 @@
     var logger = require("./lib/debug"),
         cluster = require('cluster');
 
-    logger.emerg("test");
-
     function fork(running) {
         var child = cluster.fork();
 

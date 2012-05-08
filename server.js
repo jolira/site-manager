@@ -64,7 +64,7 @@
         });
     }
 
-    if (logger.debug && cluster.isMaster) {
+    if (!logger.debug && cluster.isMaster) {
         return startMaster();
     }
 

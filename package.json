@@ -18,7 +18,7 @@
         "404project":"*",
         "underscore":"*",
         "connect":">= 2.0.3",
-        "express":">= 3.0",
+        "express":">= 3.0.0alpha4",
         "winston": "*",
         "batch":"*"
     },

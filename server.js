@@ -6,7 +6,7 @@
             return 0;
         }
 
-        return val === +val ? val : 0;
+        return val === +val ? val : parseInt(val, 10);
     }
 
     var os = require('os'),
@@ -18,7 +18,7 @@
         path = require("path"),
         SITES = conf.sites || path.join(".", "sites"),
         RESTART_DELAY = conf["restart-delay"] || 1500,
-        PORT = conf.port || 3e3,
+        PORT = conf.port || getInt(process.env.PORT)  || getInt(process.env.C9_PORT) || 3e3,
         WORKERS = conf.cluster === true ? os.cpus().length * 2 : getInt(conf.cluster),
         watchAll,
         launcher;
@@ -64,7 +64,7 @@
 
         // Fork workers.
         for (var i = 0; i < WORKERS; i++) {
-            var child = fork(running);
+            fork(running);
         }
 
         cluster.on('death', function (worker) {

@@ -1,6 +1,6 @@
 {
     "name":"site-manager",
-    "version":"0.4.4",
+    "version":"0.4.5",
     "description":"Create & manage mobile & desktop sites using HTML5 & CSS3",
     "keywords":["site", "html5"],
     "contributors": [

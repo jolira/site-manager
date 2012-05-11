@@ -1,8 +1,27 @@
 (function () {
     "use strict";
 
-    var logger = require("./lib/debug"),
-        cluster = require('cluster');
+    function getInt(val) {
+        if (!val) {
+            return 0;
+        }
+
+        return val === +val ? val : parseInt(val);
+    }
+
+    var os = require('os'),
+        logger = require("./lib/debug"),
+        conf = require("./lib/parse-cli"),
+        cluster = require('cluster'),
+        theLauncher = require('./lib/launcher'),
+        watch = require("directory-tree-watcher"),
+        path = require("path"),
+        SITES = conf.sites || path.join(".", "sites"),
+        RESTART_DELAY = conf["restart-delay"] || 1500,
+        PORT = conf.port || 3e3,
+        WORKERS = conf.cluster === true ? os.cpus().length * 2 : getInt(conf.cluster),
+        watchAll,
+        launcher;
 
     function fork(running) {
         var child = cluster.fork();
@@ -31,9 +50,6 @@
         var signals = process.platform === 'win32' ?
                 ['CTRL_C_EVENT', 'CTRL_BREAK_EVENT', 'CTRL_CLOSE_EVENT', 'CTRL_SHUTDOWN_EVENT'] :
                 ['SIGINT', 'SIGTERM'],
-            os = require('os'),
-            numCPUs = os.cpus().length,
-            workers = numCPUs * 2,
             running = {};
 
         process.on('exit', function () {
@@ -47,7 +63,7 @@
         });
 
         // Fork workers.
-        for (var i = 0; i < workers; i++) {
+        for (var i = 0; i < WORKERS; i++) {
             var child = fork(running);
         }
 
@@ -64,9 +80,63 @@
         });
     }
 
-    if (!logger.debug && cluster.isMaster) {
+    if (WORKERS > 1 && cluster.isMaster) {
         return startMaster();
     }
 
-    require('./lib/server.js');
+    logger.info("starting %s", process.pid);
+
+    process.on("uncaughtException", function (exception) {
+        logger.error("uncaught exception", exception ? exception.stack || exception : null);
+        restart();
+    });
+
+    function handleError(err) {
+        if (err) {
+            logger.alert(err.stack || err);
+            process.exit(-1);
+        }
+    }
+
+    launcher = theLauncher(SITES);
+
+    function start(){
+        launcher.start(PORT, function (err) {
+            logger("Started...");
+            handleError(err);
+            watchAll();
+        });
+    }
+
+    function restart() {
+        logger("Restarting...");
+        launcher.stop(function (err) {
+            handleError(err);
+
+            if (cluster.isWorker) {
+                process.exit();
+            }
+
+            start();
+        });
+    }
+
+    watchAll = function() {
+        var watcher;
+
+        if (conf["watch-dirs"]) {
+            watch(SITES, {
+                except: [".git", ".idea"]
+            }, function(){
+                if (watcher) {
+                    watcher.close();
+                }
+
+                setTimeout(restart, RESTART_DELAY);
+            }, function(err, theWatcher) {
+                watcher = theWatcher;
+            });
+        }
+    };
+    start();
 })();

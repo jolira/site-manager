@@ -45,9 +45,11 @@ chromium.org/developers/how-tos/chrome-frame-getting-started -->
 {{{this}}}
 {{/each}}
 
+{{#if useRequireJS}}
 <!-- JavaScript at the bottom for fast page loading -->
 <!-- load require.js and have it load the rest of the scripts -->
 <script src="js/libs/require/index-1.0.7.js" data-main="js/main"></script>
+{{/if}}
 
 {{#each templateFiles}}
 <script type="text/template" id="{{name}}">
@@ -70,5 +72,9 @@ mathiasbynens.be/notes/async-analytics-snippet -->
     }(document, 'script'));
 </script>
 {{/if}}
+
+{{#each tailingScripts}}
+<script src="{{this}}"></script>
+{{/each}}
 </body>
 </html>

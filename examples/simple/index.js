@@ -16,6 +16,22 @@
                 "name": "description",
                 "content": "A simple demo for how to use the site-manager " +
                     "(http://github.com/jolira/site-manager)"
+            },
+            {
+                "name": "apple-mobile-web-app-capable",
+                "content": "yes"
+            },
+            {
+                "name": "apple-mobile-web-app-status-bar-style",
+                "content": "black"
+            },
+            {
+                "name": "apple-touch-icon",
+                "content": "img/icon.png"
+            },
+            {
+                "name": "apple-touch-startup-image",
+                "content": "img/home.png"
             }
         ],
         "htmlFiles": [

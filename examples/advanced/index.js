@@ -10,6 +10,7 @@
     module.exports = function (defaults, cb, localProperties, globalProperties, app) {
         var pubdirs = [pubdir, twitterbootstrap];
 
+        defaults.useRequireJS = true; // set to false if require.js is not something you want to use
         defaults["public"].forEach(function (dir) {
             pubdirs.push(dir);
         });
@@ -20,7 +21,7 @@
             "less/bootstrap.less",
             "less/responsive.less"
         ];
-        defaults.scripts = [
+        defaults.trailingScripts = [
             "js/libs/jquery/jquery-1.7.1.js",
             "js/bootstrap-alert.js",
             "js/bootstrap-button.js",

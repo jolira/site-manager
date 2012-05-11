@@ -6,7 +6,7 @@
             return 0;
         }
 
-        return val === +val ? val : parseInt(val);
+        return val === +val ? val : 0;
     }
 
     var os = require('os'),

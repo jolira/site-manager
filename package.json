@@ -1,6 +1,6 @@
 {
     "name":"site-manager",
-    "version":"0.5.0,.",
+    "version":"0.5.0",
     "description":"Create & manage mobile & desktop sites using HTML5 & CSS3",
     "keywords":["site", "html5"],
     "contributors": [
@@ -41,4 +41,7 @@
         "url":"http://github.com/jolira/site-manager/issues"
     },
     "main":"server"
+    "engines":{
+        "node":">= 0.5.0 < 0.7.0"
+    }
 }

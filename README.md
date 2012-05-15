@@ -1,7 +1,7 @@
 site-manager [<img src="https://secure.travis-ci.org/jolira/site-manager.png" />](http://travis-ci.org/#!/jolira/site-manager)
 ========================================
 
-Yet another server to enable development teams to create client-centric applications.
+A simple server for developing single-page applictions quickly in a team environment.
 
 The core of the server are handlebar templates. Here is one handlebar template that comes with the site-manager at
 [``public/index.html``](https://github.com/jolira/site-manager/blob/master/public/index.html).

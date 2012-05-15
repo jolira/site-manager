@@ -1,7 +1,87 @@
 site-manager [<img src="https://secure.travis-ci.org/jolira/site-manager.png" />](http://travis-ci.org/#!/jolira/site-manager)
 ========================================
 
-A simple little server for single-page application.
+Yet another server to enable development teams to create client-centric applications.
+
+The core of the server are handlebar templates. Here is one handlebar template that comes with the site-manager at
+[``public/index.html``](https://github.com/jolira/site-manager/blob/master/public/index.html).
+
+
+A Very Simple Example
+-----------------------------
+
+Create a new directory demo appliation in a new directory, such as
+
+```
+mkdir mydemoapp
+cd mydemoapp
+```
+
+Create a new ``package.json`` declaring site-manager as a dependency.
+
+```
+{
+  "name": "mydemoapp",
+  "version": "0.0.1",
+  "dependencies": {
+    "site-manager": "*"
+  },
+  "main":"index",
+  "engines":{
+    "node":">= 0.6.0 < 0.7.0"
+  }
+}
+```
+
+Declaring the site-manager is not strictly required, but makes deploying to many systems such as Heroku much
+easier. Instead of declaring the dependency, one case also install the site-manager globally using
+``npm install -g site-manager``.
+
+
+Next, we need a ``index.js`` file:
+
+```
+(function (__dirname, module) {
+    "use strict";
+    var path = require("path");
+    module.exports = function (defaults, cb, properties, app) {
+        defaults.useRequireJS = false; // disable the site-manager support for requireJS
+        defaults.hostname = "mydemoapp.jolira.com"; // define the name of the site
+        defaults.title = "My Demo App"; // The title to be displayed in the titlebar
+        defaults.htmlFiles = [
+            path.join(__dirname, "content.html") // add some content
+        ];
+        return cb(undefined, defaults);
+    };
+})(__dirname, module);
+```
+
+Now, all that is remaining is to specify the html-fragment to be displayed when we run the site-manager.
+
+```
+<h1>Hello World!!!</h1>
+```
+
+To install the dependencies:
+
+```
+npm install -d
+```
+
+To run the example:
+
+```
+node_modules/.bin/site-manager --debug --port=3000 .
+```
+
+To run the example on Heroku you need the folowing ``Procfile`.
+
+```
+web: node_modules/.bin/site-manager --debug --port=$PORT --watch-dirs=false .
+```
+
+Other Features
+------------------------
 
 Key features of this package are:
 

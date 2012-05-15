@@ -82,6 +82,33 @@ web: node_modules/.bin/site-manager --debug --port=$PORT --watch-dirs=false .
 
 Go to ``http://localhost:3000/`` to the example running.
 
+Configuring a Site
+------------------------
+
+As shown in the example, every site-manager site has configures the site by exporting a function. This function
+looks like this:
+
+```
+    "use strict";
+    module.exports = function (defaults, cb, properties, app) {
+        // configure the defaults object here
+        return cb(undefined, defaults);
+    };
+```
+
+The default object takes the following parameters:
+
+* ``defaults``: The defaults object to be configured. A detailed description of the properties
+   of this object can be found at
+   [``lib/defaults.json``](https://github.com/jolira/site-manager/blob/master/lib/defaults.js).
+   The [``public/index.html``](https://github.com/jolira/site-manager/blob/master/public/index.html) shows
+   how may of these values are used.
+* ``cb`` the the callback function, which takes two parameters ``cb(err, vals)``. The first parameter
+  should be set to ``undefined``unless there is an error to report. The second parameter should be used
+  to pass the configured default object back to the site-manager.
+* ``properties`` loaded from a ``.config.json`` file in the project directory.
+* ``app`` the [express.js](http://expressjs.com/) object used by the site-manager.
+
 Other Features
 ------------------------
 
@@ -100,16 +127,6 @@ Key features of this package are:
   manifest](http://www.html5rocks.com/en/tutorials/appcache/beginner/) when changes are detected the require reloading
   the site.
 * _Developer Support_: The server monitors files and automatically restarts when changes are detected.
-
-Getting Started
------------------
-
-Node.js 0.6 or better needs to be installed on your system. If you do not have node installed yet, please go to
-http://nodejs.org/, download the package for your operating system, and install it.
-
-Once node is install, you can install the site-manaer using `sudo npm install -g site-manager`.
-
-The site-manager runs third party modules. Examples for such modules can be found in the `examples` direcctory.
 
 ### Multi-Site Mode
 

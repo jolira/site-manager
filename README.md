@@ -80,6 +80,8 @@ To run the example on Heroku you need the folowing ``Procfile`.
 web: node_modules/.bin/site-manager --debug --port=$PORT --watch-dirs=false .
 ```
 
+Go to ``http://localhost:3000/`` to the example running.
+
 Other Features
 ------------------------
 

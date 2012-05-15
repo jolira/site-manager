@@ -1,0 +1,11 @@
+{
+    "name": "mydemoapp",
+    "version": "0.0.1",
+    "dependencies": {
+        "site-manager": "*"
+    },
+    "main":"index",
+    "engines":{
+        "node":">= 0.6.0 < 0.7.0"
+    }
+}

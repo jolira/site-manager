@@ -1,0 +1,1 @@
+web: node_modules/.bin/site-manager --debug --port=$PORT --watch-dirs=false .

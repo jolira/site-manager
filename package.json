@@ -1,6 +1,6 @@
 {
     "name":"site-manager",
-    "version":"0.5.2",
+    "version":"0.5.3",
     "description":"Create & manage mobile & desktop sites using HTML5 & CSS3",
     "keywords":["site", "html5"],
     "contributors": [
@@ -16,7 +16,6 @@
         "directory-tree-watcher":"*",
         "handlebars":"*",
         "404project":"*",
-        "underscore":"*",
         "connect":">= 2.0.3",
         "express":">= 3.0.0alpha4",
         "winston": "*",

@@ -5,5 +5,3 @@ sites
 .npmignore
 .travis.yml
 .gitignore
-README.md
-Jakefile.js

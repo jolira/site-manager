@@ -19,17 +19,19 @@
     {{#if title}}
     <title>{{title}}</title>
     {{/if}}
-
     {{#each metas}}
     <meta name="{{name}}" content="{{content}}">
     {{/each}}
-
+    {{#each links}}
+    {{#if sizes}}
+    <link rel="{{rel}}" sizes="{{sizes}}" href="{{href}}" />
+    {{else}}
+    <link rel="{{rel}}" href="{{href}}" />
+    {{/if}}
+    {{/each}}
     {{#each stylesheets}}
     <link rel="stylesheet" href="{{this}}">
     {{/each}}
-
-    <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
-
     {{#each scripts}}
     <script src="{{this}}"></script>
     {{/each}}

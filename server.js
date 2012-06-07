@@ -10,7 +10,7 @@
     }
 
     var os = require('os'),
-        logger = require("./lib/debug"),
+        logger = require("./lib/logger"),
         conf = require("./lib/parse-cli"),
         cluster = require('cluster'),
         theLauncher = require('./lib/launcher'),
@@ -98,7 +98,7 @@
         }
     }
 
-    launcher = theLauncher(SITES);
+    launcher = theLauncher(SITES, logger);
 
     function start(){
         launcher.start(PORT, function (err) {

@@ -14,7 +14,7 @@
 
     vows.describe('manifest').addBatch({
         'create the filter': {
-            topic: manifest("/x/manifest.appcache", { maxAge: 0 }),
+            topic: manifest("/x/manifest.appcache", { maxAge: 0 }, function(){}),
             'not requesting manifest.appcache': {
                 topic: function (filter) {
                     filter({}, {}, this.callback);

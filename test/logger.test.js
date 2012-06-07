@@ -4,10 +4,10 @@
 
     var NODE_DEBUG = process.env.NODE_DEBUG,
         vows = require('vows'),
-        debug = require('../lib/debug');
+        debug = require('../lib/logger');
 
     // Create a Test Suite
-    vows.describe('debug').addBatch({
+    vows.describe('logger').addBatch({
         'with output turned on': {
             topic: function () {
                 process.env.NODE_DEBUG = "site-manager";

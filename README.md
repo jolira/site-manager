@@ -1,25 +1,25 @@
 site-manager [<img src="https://secure.travis-ci.org/jolira/site-manager.png" />](http://travis-ci.org/#!/jolira/site-manager)
 ========================================
 
-A simple server for developing single-page applictions quickly in a team environment.
+A simple server for developing single-page applications quickly in a team environment.
 
-The core of the server are handlebar templates. Here is one handlebar template that comes with the site-manager at
-[``public/index.html``](https://github.com/jolira/site-manager/blob/master/public/index.html).
+The core of the server are handlebar templates. Here is one handlebar template that 
+comes with the site-manager at [``public/index.html``](https://github.com/jolira/site-manager/blob/master/public/index.html).
 
 
 A Very Simple Example
 -----------------------------
 
-Create a new directory demo appliation in a new directory, such as
+Create a new directory demo appliation in a new directory, such as...
 
-```
+```bash
 mkdir mydemoapp
 cd mydemoapp
 ```
 
-Create a new ``package.json`` declaring site-manager as a dependency.
+Create a new ``package.json``, declaring site-manager as a dependency.
 
-```
+```json
 {
   "name": "mydemoapp",
   "version": "0.0.1",
@@ -33,14 +33,14 @@ Create a new ``package.json`` declaring site-manager as a dependency.
 }
 ```
 
-Declaring the site-manager is not strictly required, but makes deploying to many systems such as Heroku much
-easier. Instead of declaring the dependency, one case also install the site-manager globally using
+Declaring the site-manager isn't strictly required, but makes deploying to many systems (such as Heroku) much
+easier. Instead of declaring the dependency, one can also install the site-manager globally using
 ``npm install -g site-manager``.
 
 
 Next, we need a ``index.js`` file:
 
-```
+```javascript
 (function (__dirname, module) {
     "use strict";
     var path = require("path");
@@ -56,31 +56,31 @@ Next, we need a ``index.js`` file:
 })(__dirname, module);
 ```
 
-Now, all that is remaining is to specify the html-fragment to be displayed when we run the site-manager.
+Now, all that is remaining is to specify the HTML-fragment to be displayed when we run the site-manager.
 
-```
+```html
 <h1>Hello World!!!</h1>
 ```
 
 To install the dependencies:
 
-```
+```bash
 npm install -d
 ```
 
 To run the example:
 
-```
-node_modules/.bin/site-manager --debug --port=3000 .
+```bash
+$ node_modules/.bin/site-manager --debug --port=3000 .
 ```
 
-To run the example on Heroku you need the folowing ``Procfile`.
+To run the example on Heroku you need the following ``Procfile`:
 
 ```
 web: node_modules/.bin/site-manager --debug --port=$PORT --watch-dirs=false .
 ```
 
-Go to ``http://localhost:3000/`` to the example running.
+Go to ``http://localhost:3000`` to get the example running.
 
 Configuring a Site
 ------------------------
@@ -88,7 +88,7 @@ Configuring a Site
 As shown in the example, every site-manager site has configures the site by exporting a function. This function
 looks like this:
 
-```
+```javascript
     "use strict";
     module.exports = function (defaults, cb, properties, app) {
         // configure the defaults object here
@@ -114,17 +114,17 @@ Other Features
 
 Key features of this package are:
 
-* _Teams_: Break the the app into many html fragments to make team development easier.
+* _Teams_: Break the the app into many HTML fragments to make team development easier.
 * _HTML5Boilerplate_: Our default templates incorporate the latest & greatest boilerplate.
 * _RequireJS_: Teams can (optionally) use [Asynchronous Module Definition](https://github.com/amdjs/amdjs-api/wiki/AMD)
   to organize their JavaScript.
-* _Auto Reloads_: The site-manager watches the file system for changes and automatically reloads a site when a
-  change is detected.
-* _Less_: Automatically compiles .less files to ``text/css using``.
+* _Auto Reloads_: The site-manager watches the filesystem for changes, automatically reloading a site when it
+  detects a change.
+* _Less_: Automatically compiles ``.less`` files to ``text/css using``.
 * _Properties_: The site-manager loads ``.config.json`` files from the site directory. The site-manager also loads
-  properties from a ``~/.sitemanager.json`` file and passes the data to the different sites it serves.
-* _Manifest_: The site-manager automatically updates [html5
-  manifest](http://www.html5rocks.com/en/tutorials/appcache/beginner/) when changes are detected the require reloading
+  properties from a ``~/.sitemanager.json`` file, and passes the data to the different sites it serves.
+* _Manifest_: The site-manager automatically updates [HTML5
+  manifest](http://www.html5rocks.com/en/tutorials/appcache/beginner/) when changes are detected that require reloading
   the site.
 * _Developer Support_: The server monitors files and automatically restarts when changes are detected.
 
@@ -144,7 +144,7 @@ To define the hostames used by examples from the site-manager github repo, add t
 (assuming you are running the site-manager on your machine):
 
 ```
-127.0.0.1	simple.jolira.com advanced.jolira.com
+127.0.0.1  simple.jolira.com advanced.jolira.com
 ```
 
 Once this entry has been added, you can access the advanced example as `http://advanced.jolira.com:3000` and the simple
@@ -167,7 +167,7 @@ As there is no virtual hosting, we do not have to define any entry in `/etc/host
 Debug output is generated when the string `site-manager` is part of the value of the ``NODE_DEBUG`` environment
 variable.
 
-```
+```bash
 export NODE_DEBUG=site-manager
 ```
 
@@ -176,7 +176,7 @@ Testing
 
 Install jake: `npm install -g jake`
 
-Note that Jake is a system-level tool, and wants to be installed globally.
+Note that Jake is a system-level tool, so it wants to be installed globally.
 
 To execute tests execute: `jake test`
 

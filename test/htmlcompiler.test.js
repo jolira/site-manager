@@ -11,7 +11,7 @@
     vows.describe('htmlcompiler').addBatch({
         redirect: {
             topic: function () {
-                return htmlcomiler({});
+                return htmlcomiler({}, console.log);
             },
             process: {
                 "topic": function (compiler) {
@@ -43,7 +43,7 @@
         },
         'test.css': {
             topic: function () {
-                return htmlcomiler({});
+                return htmlcomiler({}, console.log);
             },
             process: {
                 "topic": function (compiler) {
@@ -74,7 +74,7 @@
                     public: [
                         path.join(__dirname, "..", "public")
                     ]
-                });
+                }, console.log);
             },
             process: {
                 "topic": function (compiler) {

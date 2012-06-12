@@ -38,10 +38,6 @@
         return navigator.onLine;
     }
 
-    if (!$('html').attr('manifest')) {
-        log('No Cache Manifest listed on the  tag.')
-    }
-
 // Swap in newly download files when update is ready
     cache.addEventListener('updateready', function (e) {
             // Don't perform "swap" if this is the first cache

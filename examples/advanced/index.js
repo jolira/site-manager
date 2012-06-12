@@ -10,7 +10,7 @@
     module.exports = function (defaults, cb, localProperties, globalProperties, app) {
         var pubdirs = [pubdir, twitterbootstrap];
 
-        defaults.useRequireJS = true; // set to false if require.js is not something you want to use
+        defaults.useRequireJS = false; // set to false if require.js is not something you want to use
         defaults["public"].forEach(function (dir) {
             pubdirs.push(dir);
         });
@@ -22,18 +22,8 @@
             "less/responsive.less"
         ];
         defaults.trailingScripts = [
-            "js/libs/jquery/jquery-1.7.1.js",
-            "js/bootstrap-alert.js",
-            "js/bootstrap-button.js",
-            "js/bootstrap-carousel.js",
-            "js/bootstrap-collapse.js",
-            "js/bootstrap-dropdown.js",
-            "js/bootstrap-modal.js",
-            "js/bootstrap-scrollspy.js",
-            "js/bootstrap-tab.js",
-            "js/bootstrap-tooltip.js",
-            "js/bootstrap-transition.js",
-            "js/bootstrap-typeahead.js"
+            "js/app-cache.js",
+            "js/libs/jquery/jquery-1.7.1.js"
         ];
         defaults.googleAnalyticsWebPropertyID = "UA-3602945-1";
         defaults.title = "More Advanced Site-Manager Example";
@@ -62,10 +52,6 @@
         ];
         defaults.htmlFiles = [
             path.join(templates, "layout.html")
-        ];
-        defaults.scripts = [
-            "js/libs/modernizr-2.5.2.min.js",
-            "js/libs/phonegap-1.4.1.js"
         ];
 
         return cb(undefined, defaults);

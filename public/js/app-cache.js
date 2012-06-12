@@ -14,36 +14,28 @@
     cache.addEventListener('progress', logEvent, false);
     cache.addEventListener('updateready', logEvent, false);
 
-// Log every event to the console
     function logEvent(e) {
-        var online, status, type, message;
-        online = (isOnline()) ? 'yes' : 'no';
-        status = cacheStatusValues[cache.status];
-        type = e.type;
-        message = 'online: ' + online;
-        message += ', event: ' + type;
-        message += ', status: ' + status;
+        var onLine = (navigator.onLine) ? 'yes' : 'no',
+            message = 'online: ' + onLine + ', event: ' + e.type +
+            ', status: ' + cacheStatusValues[cache.status];
 
         if (type == 'error' && navigator.onLine) {
             message += ' There was an unknown error, check your Cache Manifest.';
         }
-        log(message);
+
+        console.log(message);
     }
 
-    function log(s) {
-        console.log(s);
-    }
-
-    function isOnline() {
-        return navigator.onLine;
-    }
-
-// Swap in newly download files when update is ready
     cache.addEventListener('updateready', function (e) {
             // Don't perform "swap" if this is the first cache
             if (cacheStatusValues[cache.status] != 'idle') {
                 cache.swapCache();
-                log('Swapped/updated the Cache Manifest.');
+
+                console.log('Swapped/updated the Cache Manifest.');
+
+                if (confirm('Updates to the program are available. Load them?')) {
+                    window.location.reload();
+                }
             }
         }, false);
     cache.update();

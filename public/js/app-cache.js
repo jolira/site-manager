@@ -46,15 +46,14 @@
         console.log(message);
     }
 
-    cache.addEventListener('cached', logEvent, false);
-    cache.addEventListener('checking', logEvent, false);
-    cache.addEventListener('downloading', logEvent, false);
-    cache.addEventListener('error', logEvent, false);
-    cache.addEventListener('noupdate', logEvent, false);
-    cache.addEventListener('obsolete', logEvent, false);
-    cache.addEventListener('progress', logEvent, false);
-
     window.addEventListener('load', function(e) {
+        cache.addEventListener('cached', logEvent, false);
+        cache.addEventListener('checking', logEvent, false);
+        cache.addEventListener('downloading', logEvent, false);
+        cache.addEventListener('error', logEvent, false);
+        cache.addEventListener('noupdate', logEvent, false);
+        cache.addEventListener('obsolete', logEvent, false);
+        cache.addEventListener('progress', logEvent, false);
         cache.addEventListener('updateready', function (e) {
             logEvent(e);
 

@@ -20,6 +20,9 @@
         RESTART_DELAY = conf["restart-delay"] || 1500,
         PORT = conf.port || getInt(process.env.PORT)  || getInt(process.env.C9_PORT) || 3e3,
         WORKERS = conf.cluster === true ? os.cpus().length * 2 : getInt(conf.cluster),
+        SSL_PORT = conf['secure-port'],
+        SSL_CERT = conf['secure-cert'],
+        SSL_KEY = conf['secure-key'],
         watchAll,
         launcher;
 
@@ -101,7 +104,7 @@
     launcher = theLauncher(SITES, logger);
 
     function start(){
-        launcher.start(PORT, function (err) {
+        launcher.start(PORT, SSL_PORT, SSL_KEY, SSL_CERT, function (err) {
             logger("Started...");
             handleError(err);
             watchAll();

@@ -15,6 +15,14 @@
         }
     };
 
+    app.debug = app.log = function() {
+        console.log.apply(console, arguments);
+    }
+
+    app.error = function() {
+        console.log.apply(console, arguments);
+    }
+
     function getCacheStatus() {
         switch (cache.status) {
             case cache.UNCACHED: // UNCACHED == 0
@@ -43,7 +51,7 @@
             message += '; There was an unknown error, check your Cache Manifest.';
         }
 
-        console.log(message);
+        app.log(message);
     }
 
     window.addEventListener('load', function(e) {
@@ -60,7 +68,7 @@
             if (cache.status === cache.UPDATEREADY) {
                 cache.swapCache();
 
-                console.log('Swapped/updated the Cache Manifest.');
+                app.log('Swapped/updated the Cache Manifest.');
                 app.applicationCacheUpdateReady();
             }
         }, false);

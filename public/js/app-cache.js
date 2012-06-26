@@ -6,22 +6,23 @@
     var cache = window.applicationCache,
         app = window["jolira-app"] = window["jolira-app"] || {};
 
+    app.debug =
+        app.log = function () {
+            console.log.apply(console, arguments);
+        }
+
+    app.error = function () {
+        console.error.apply(console, arguments);
+    }
+
     /**
      * Override this handler if you would like to handle the update differently
      */
-    app.applicationCacheUpdateReady = function() {
+    app.applicationCacheUpdateReady = function () {
         if (confirm('Program updates are available. Load them now?')) {
             window.location.reload();
         }
     };
-
-    app.debug = app.log = function() {
-        console.log.apply(console, arguments);
-    }
-
-    app.error = function() {
-        console.log.apply(console, arguments);
-    }
 
     function getCacheStatus() {
         switch (cache.status) {
@@ -37,7 +38,7 @@
                 return 'UPDATEREADY';
             case cache.OBSOLETE: // OBSOLETE == 5
                 return 'OBSOLETE';
-        };
+        }
         return 'UNKNOWN';
     }
 
@@ -54,7 +55,7 @@
         app.log(message);
     }
 
-    window.addEventListener('load', function(e) {
+    window.addEventListener('load', function (e) {
         cache.addEventListener('cached', logEvent, false);
         cache.addEventListener('checking', logEvent, false);
         cache.addEventListener('downloading', logEvent, false);

@@ -29,6 +29,9 @@
                             assert.equal(value, "index.html");
 
                             result.redirect = true;
+                        },
+                        writeHead: function() {
+                            // nothing
                         }
                     }, function (err) {
                         self.callback(err, result);
@@ -96,6 +99,9 @@
                             assert.equal(value, "text/html; charset=UTF-8");
 
                             result.contenttype = true;
+                        },
+                        writeHead: function() {
+                            // nothing
                         }
                     }, function (err) {
                         self.callback(err);
@@ -123,6 +129,9 @@
                                 assert.equal(value, "text/html; charset=UTF-8");
 
                                 result.contenttype = true;
+                            },
+                            writeHead: function() {
+                                // nothing
                             }
                         }, function (err) {
                             self.callback(err);

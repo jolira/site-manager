@@ -100,8 +100,8 @@
 
                             result.contenttype = true;
                         },
-                        writeHead: function() {
-                            // nothing
+                        writeHead: function(status, header) {
+                            result.contenttype = header["Content-Type"];
                         }
                     }, function (err) {
                         self.callback(err);
@@ -130,8 +130,8 @@
 
                                 result.contenttype = true;
                             },
-                            writeHead: function() {
-                                // nothing
+                            writeHead: function(status, header) {
+                                result.contenttype = header["Content-Type"];
                             }
                         }, function (err) {
                             self.callback(err);

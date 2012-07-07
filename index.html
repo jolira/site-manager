@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Site-manager by jolira</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Site-manager</h1>
+          <h2>Create &amp; manage mobile &amp; desktop sites using HTML5 &amp; CSS3</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/jolira/site-manager/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/jolira/site-manager/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/jolira/site-manager" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>site-manager <a href="http://travis-ci.org/#!/jolira/site-manager"><img src="https://secure.travis-ci.org/jolira/site-manager.png"></a>
+</h1>
+
+<p>A simple server for developing single-page applications quickly in a team environment.</p>
+
+<p>The core of the server are handlebar templates. Here is one handlebar template that 
+comes with the site-manager at <a href="https://github.com/jolira/site-manager/blob/master/public/index.html"><code>public/index.html</code></a>.</p>
+
+<h2>A Very Simple Example</h2>
+
+<p>Create a new directory demo appliation in a new directory, such as...</p>
+
+<div class="highlight">
+<pre>mkdir mydemoapp
+<span class="nb">cd </span>mydemoapp
+</pre>
+</div>
+
+
+<p>Create a new <code>package.json</code>, declaring site-manager as a dependency.</p>
+
+<div class="highlight">
+<pre><span class="p">{</span>
+  <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"mydemoapp"</span><span class="p">,</span>
+  <span class="nt">"version"</span><span class="p">:</span> <span class="s2">"0.0.1"</span><span class="p">,</span>
+  <span class="nt">"dependencies"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"site-manager"</span><span class="p">:</span> <span class="s2">"*"</span>
+  <span class="p">},</span>
+  <span class="nt">"main"</span><span class="p">:</span><span class="s2">"index"</span><span class="p">,</span>
+  <span class="nt">"engines"</span><span class="p">:{</span>
+    <span class="nt">"node"</span><span class="p">:</span><span class="s2">"&gt;= 0.6.0 &lt; 0.7.0"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre>
+</div>
+
+
+<p>Declaring the site-manager isn't strictly required, but makes deploying to many systems (such as Heroku) much
+easier. Instead of declaring the dependency, one can also install the site-manager globally using
+<code>npm install -g site-manager</code>.</p>
+
+<p>Next, we need a <code>index.js</code> file:</p>
+
+<div class="highlight">
+<pre><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="nx">module</span><span class="p">)</span> <span class="p">{</span>
+    <span class="s2">"use strict"</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"path"</span><span class="p">);</span>
+    <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">defaults</span><span class="p">,</span> <span class="nx">cb</span><span class="p">,</span> <span class="nx">properties</span><span class="p">,</span> <span class="nx">app</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">defaults</span><span class="p">.</span><span class="nx">useRequireJS</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// disable the site-manager support for requireJS</span>
+        <span class="nx">defaults</span><span class="p">.</span><span class="nx">hostname</span> <span class="o">=</span> <span class="s2">"mydemoapp.jolira.com"</span><span class="p">;</span> <span class="c1">// define the name of the site</span>
+        <span class="nx">defaults</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="s2">"My Demo App"</span><span class="p">;</span> <span class="c1">// The title to be displayed in the titlebar</span>
+        <span class="nx">defaults</span><span class="p">.</span><span class="nx">htmlFiles</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s2">"content.html"</span><span class="p">)</span> <span class="c1">// add some content</span>
+        <span class="p">];</span>
+        <span class="k">return</span> <span class="nx">cb</span><span class="p">(</span><span class="kc">undefined</span><span class="p">,</span> <span class="nx">defaults</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">})(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="nx">module</span><span class="p">);</span>
+</pre>
+</div>
+
+
+<p>Now, all that is remaining is to specify the HTML-fragment to be displayed when we run the site-manager.</p>
+
+<div class="highlight">
+<pre><span class="nt">&lt;h1&gt;</span>Hello World!!!<span class="nt">&lt;/h1&gt;</span>
+</pre>
+</div>
+
+
+<p>To install the dependencies:</p>
+
+<div class="highlight">
+<pre>npm install -d
+</pre>
+</div>
+
+
+<p>To run the example:</p>
+
+<div class="highlight">
+<pre><span class="nv">$ </span>node_modules/.bin/site-manager --debug --port<span class="o">=</span>3000 .
+</pre>
+</div>
+
+
+<p>To run the example on Heroku you need the following `<code>Procfile</code>:</p>
+
+<pre><code>web: node_modules/.bin/site-manager --debug --port=$PORT --watch-dirs=false .
+</code></pre>
+
+<p>Go to <code>http://localhost:3000</code> to get the example running.</p>
+
+<h2>Configuring a Site</h2>
+
+<p>As shown in the example, every site-manager site has configures the site by exporting a function. This function
+looks like this:</p>
+
+<div class="highlight">
+<pre>    <span class="s2">"use strict"</span><span class="p">;</span>
+    <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">defaults</span><span class="p">,</span> <span class="nx">cb</span><span class="p">,</span> <span class="nx">properties</span><span class="p">,</span> <span class="nx">app</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// configure the defaults object here</span>
+        <span class="k">return</span> <span class="nx">cb</span><span class="p">(</span><span class="kc">undefined</span><span class="p">,</span> <span class="nx">defaults</span><span class="p">);</span>
+    <span class="p">};</span>
+</pre>
+</div>
+
+
+<p>The default object takes the following parameters:</p>
+
+<ul>
+<li>
+<code>defaults</code>: The defaults object to be configured. A detailed description of the properties
+of this object can be found at
+<a href="https://github.com/jolira/site-manager/blob/master/lib/defaults.js"><code>lib/defaults.json</code></a>.
+The <a href="https://github.com/jolira/site-manager/blob/master/public/index.html"><code>public/index.html</code></a> shows
+how may of these values are used.</li>
+<li>
+<code>cb</code> the the callback function, which takes two parameters <code>cb(err, vals)</code>. The first parameter
+should be set to <code>undefined</code>unless there is an error to report. The second parameter should be used
+to pass the configured default object back to the site-manager.</li>
+<li>
+<code>properties</code> loaded from a <code>.config.json</code> file in the project directory.</li>
+<li>
+<code>app</code> the <a href="http://expressjs.com/">express.js</a> object used by the site-manager.</li>
+</ul><h2>Other Features</h2>
+
+<p>Key features of this package are:</p>
+
+<ul>
+<li>
+<em>Teams</em>: Break the the app into many HTML fragments to make team development easier.</li>
+<li>
+<em>HTML5Boilerplate</em>: Our default templates incorporate the latest &amp; greatest boilerplate.</li>
+<li>
+<em>RequireJS</em>: Teams can (optionally) use <a href="https://github.com/amdjs/amdjs-api/wiki/AMD">Asynchronous Module Definition</a>
+to organize their JavaScript.</li>
+<li>
+<em>Auto Reloads</em>: The site-manager watches the filesystem for changes, automatically reloading a site when it
+detects a change.</li>
+<li>
+<em>Less</em>: Automatically compiles <code>.less</code> files to <code>text/css using</code>.</li>
+<li>
+<em>Properties</em>: The site-manager loads <code>.config.json</code> files from the site directory. The site-manager also loads
+properties from a <code>~/.sitemanager.json</code> file, and passes the data to the different sites it serves.</li>
+<li>
+<em>Manifest</em>: The site-manager automatically updates <a href="http://www.html5rocks.com/en/tutorials/appcache/beginner/">HTML5
+manifest</a> when changes are detected that require reloading
+the site.</li>
+<li>
+<em>Developer Support</em>: The server monitors files and automatically restarts when changes are detected.</li>
+</ul><h3>Multi-Site Mode</h3>
+
+<p>The site-manager can run in multi-site mode, which creates virtual hosts for each module. The hostname is defined in
+the site is used as the server name of the vhost.</p>
+
+<p>In order to run in multi-site mode, point the site-manager to a directory that contains mutiple sites, such as in</p>
+
+<pre><code>site-manager examples # use the examples directory from the repo
+</code></pre>
+
+<p>To test sites you have to define the correct hostname. In order to do so, you have to add these names to <code>/etc/hosts</code>.
+To define the hostames used by examples from the site-manager github repo, add the following line to <code>/etc/hosts</code>
+(assuming you are running the site-manager on your machine):</p>
+
+<pre><code>127.0.0.1  simple.jolira.com advanced.jolira.com
+</code></pre>
+
+<p>Once this entry has been added, you can access the advanced example as <code>http://advanced.jolira.com:3000</code> and the simple
+example at <code>http://simple.jolira.com:3000</code>.</p>
+
+<h3>Single-Site Mode</h3>
+
+<p>When running in single-site mode, there is no vhosting (as only one site is served). To run the site-manager in
+single-site mode, point it to a site directory as in:</p>
+
+<pre><code>site-manager examples/simple # use the examples directory from the repo
+</code></pre>
+
+<p>As there is no virtual hosting, we do not have to define any entry in <code>/etc/hosts</code> and can access the example at
+<code>http://localhost:3000</code>.</p>
+
+<h3>Enable Debug Output</h3>
+
+<p>Debug output is generated when the string <code>site-manager</code> is part of the value of the <code>NODE_DEBUG</code> environment
+variable.</p>
+
+<div class="highlight">
+<pre><span class="nb">export </span><span class="nv">NODE_DEBUG</span><span class="o">=</span>site-manager
+</pre>
+</div>
+
+
+<h2>Testing</h2>
+
+<p>Install jake: <code>npm install -g jake</code></p>
+
+<p>Note that Jake is a system-level tool, so it wants to be installed globally.</p>
+
+<p>To execute tests execute: <code>jake test</code></p>
+
+<h2>License</h2>
+
+<p><a href="https://raw.github.com/jolira/site-manager/master/LICENSE.txt">MIT License</a></p>
+        </section>
+
+        <footer>
+          Site-manager is maintained by <a href="https://github.com/jolira">jolira</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+                  <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-3602945-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+      </div>
+    </div>
+  </body>
+</html>

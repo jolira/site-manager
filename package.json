@@ -4,21 +4,20 @@
     "description":"Create & manage mobile & desktop sites using HTML5 & CSS3",
     "keywords":["site", "html5"],
     "contributors": [
-        "Joachim Kainz <jfk@jolira.com> (http://www.jolira.com)",
-        "Gabe Hopper <gabe@jolira.com> (http://www.jolira.com)"
+        "Joachim Kainz <jfk@jolira.com> (http://www.jolira.com)"
     ],
     "repository":{
         "url":"https://github.com/jolira/site-manager.git",
         "type":"git"
     },
     "dependencies":{
-        "connect-less-jolira":"*",
-        "directory-tree-watcher":"*",
         "handlebars":"*",
         "404project":"*",
-        "connect":">= 2.0.3",
+        "connect-less-jolira":"*",
+        "directory-tree-watcher":"*",
         "express":">= 3.0.0alpha4",
-        "winston": "*",
+        "connect":">= 2.0.3",
+        "jolira-logger": "*",
         "batch":"*"
     },
     "bin": {

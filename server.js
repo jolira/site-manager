@@ -10,8 +10,8 @@
     }
 
     var os = require('os'),
-        logger = require("./lib/logger"),
         conf = require("./lib/parse-cli"),
+        logger = require("./lib/logger"),
         cluster = require('cluster'),
         theLauncher = require('./lib/launcher'),
         watch = require("directory-tree-watcher"),

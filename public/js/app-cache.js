@@ -6,7 +6,6 @@
     var cache = window.applicationCache,
         app = window["jolira-app"] = window["jolira-app"] || {};
 
-    app.isQUnit = document.URL.match(/\w+:\/\/(?:[^/]+\/)+qunit.html.*/);
     app.debug =
         app.log = function () {
             console.log.apply(console, arguments);

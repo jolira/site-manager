@@ -2,6 +2,10 @@
 (function (window, navigator, console) {
     "use strict";
 
+    /**
+     * Defines log messages and add a generic handler for caching.
+     */
+
     // See http://www.html5rocks.com/en/tutorials/cache/beginner
     var cache = window.applicationCache,
         app = window["jolira-app"] = window["jolira-app"] || {};
@@ -15,10 +19,16 @@
         console.error.apply(console, arguments);
     }
 
+    window.addEventListener("error", function(message, url, linenumber) {
+        app.error(message, url, linenumber);
+    });
+
+    app.cache = app.cache || {};
+
     /**
      * Override this handler if you would like to handle the update differently
      */
-    app.applicationCacheUpdateReady = function () {
+    app.cache.updateReady = app.cache.updateReady || function () {
         if (confirm('Program updates are available. Load them now?')) {
             window.location.reload();
         }
@@ -70,7 +80,7 @@
                 cache.swapCache();
 
                 app.log('Swapped/updated the Cache Manifest.');
-                app.applicationCacheUpdateReady();
+                app.cache.updateReady();
             }
         }, false);
     }, false);

@@ -112,7 +112,7 @@
     }
 
     function restart() {
-        logger("Restarting...");
+        logger("restarting...");
         launcher.stop(function (err) {
             handleError(err);
 

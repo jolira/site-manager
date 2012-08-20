@@ -45,8 +45,6 @@
         ids.forEach(function (id) {
             process.kill(id);
         });
-
-        return;
     }
 
     function startMaster() {
@@ -90,13 +88,13 @@
     logger.info("starting %s", process.pid);
 
     process.on("uncaughtException", function (exception) {
-        logger.error("uncaught exception", exception ? exception.stack || exception : null);
+        logger.error("uncaught exception", exception,  exception && exception.stack);
         restart();
     });
 
-    function handleError(err) {
+    function handleError(msg, err) {
         if (err) {
-            logger.alert(err.stack || err);
+            logger.alert(msg, err, err && err.stack);
             process.exit(-1);
         }
     }
@@ -106,7 +104,7 @@
     function start(){
         launcher.start(PORT, SSL_PORT, SSL_KEY, SSL_CERT, function (err) {
             logger("Started...");
-            handleError(err);
+            handleError("starting", err);
             watchAll();
         });
     }
@@ -114,7 +112,7 @@
     function restart() {
         logger("restarting...");
         launcher.stop(function (err) {
-            handleError(err);
+            handleError("stopping", err);
 
             if (cluster.isWorker) {
                 process.exit();

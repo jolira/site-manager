@@ -87,9 +87,9 @@
 
     logger.info("starting %s", process.pid);
 
-    process.on("uncaughtException", function (exception) {
-        logger.error("uncaught exception", exception,  exception && exception.stack);
-        restart();
+    process.on("uncaughtException", function (err) {
+        logger.error("uncaught exception", err,  err && err.stack);
+        process.exit();
     });
 
     function handleError(msg, err) {

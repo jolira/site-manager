@@ -1,6 +1,6 @@
 {
   "name": "site-manager",
-  "version": "0.8.12",
+  "version": "0.9.0",
   "dependencies": {
     "handlebars": {
       "version": "1.0.6-2",
@@ -127,7 +127,7 @@
       }
     },
     "jolira-logger": {
-      "version": "0.2.4",
+      "version": "0.2.5",
       "dependencies": {
         "awssum": {
           "version": "0.9.0",
@@ -156,28 +156,9 @@
               "version": "0.5.0"
             },
             "passgen": {
-              "version": "1.0.1",
-              "dependencies": {
-                "vows": {
-                  "version": "0.6.4",
-                  "dependencies": {
-                    "eyes": {
-                      "version": "0.1.7"
-                    },
-                    "diff": {
-                      "version": "1.0.3"
-                    }
-                  }
-                }
-              }
+              "version": "1.0.1"
             }
           }
-        },
-        "debug": {
-          "version": "0.7.0"
-        },
-        "horaa": {
-          "version": "0.1.2alpha"
         },
         "server-config": {
           "version": "0.0.2"
@@ -209,7 +190,7 @@
       "version": "0.1.1",
       "dependencies": {
         "mocha": {
-          "version": "1.4.0",
+          "version": "1.4.1",
           "dependencies": {
             "commander": {
               "version": "0.6.1"

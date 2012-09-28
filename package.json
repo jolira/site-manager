@@ -1,7 +1,7 @@
 {
     "name":"site-manager",
-    "version":"0.10.1",
-    "description":"Create & manage mobile & desktop sites using HTML5 & CSS3",
+    "version":"0.10.5",
+    "description":"Create & manage mobile and desktop sites using HTML5, JavaScript, and CSS3",
     "keywords":["site", "html5"],
     "contributors": [
         "Joachim Kainz <jfk@jolira.com> (http://www.jolira.com)"
